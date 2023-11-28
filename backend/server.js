@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import connect from './src/database/connect_bank.js';
-import produto from './src/routes/produto.route.js';
+import produtoRouter from './src/routes/produto.route.js';
 
 connect()
 
@@ -13,7 +13,7 @@ app.use(cors())
 app.use(express.json())
 
 
-app.use('/produto', produto)
+app.use('/produto', produtoRouter)
 
 
 const port = process.env.PORT;
