@@ -2,15 +2,18 @@ import repositories from '../repositories/produto.repositories.js'
 
 export async function cadastrarProduto(req,res){
 
-    console.log('Aqui é a função de cadastrar produto')
     let statusCode = 201;
 
     try {
 
+        console.log(req.body)
         // validar campos
         // validar chaves estrangeiras
         // formatar campos para se adequarem ao esquema
         req.body.imagem = req.file.path
+        req.body.fk_userId = req.body.userId 
+        req.body.fk_tags = req.body.tags 
+        req.body.fk_marca = req.body.marca 
  
         const produtoCadastrado = await repositories.cadastrarProduto(req.body)
         

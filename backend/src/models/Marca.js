@@ -3,7 +3,7 @@
 import mongoose from "mongoose";
 
 const Marca = new mongoose.Schema({
-  pk_tagnome: {
+  pk_marcanome: {
     type: String,
     unique: true,
     require: true,

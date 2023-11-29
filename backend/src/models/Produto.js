@@ -30,7 +30,7 @@ const produto = new mongoose.Schema({
     required: true,
   },
   genero: {
-    type: String,
+    type: [String, 'Insira um genero valido: masculino, feminino, unissex'],
     enum: ["masculino", "feminino", "unissex"],
     required: true,
   },
@@ -38,19 +38,14 @@ const produto = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  qtd: {
-    type: Number,
-    required: true,
-    default: 1,
-  },
   tamanho: {
     type: Number,
     required: true,
   },
   cores: [
     {
-      type: String,
-      trim: true,
+      type: [Map, "Insira o objeto corretamente: 'cor': qtd"],
+      of: Number,
       lowercase: true,
     },
   ],
@@ -61,6 +56,10 @@ const produto = new mongoose.Schema({
       trim: true,
     },
   ],
+  active: {
+    type: Boolean,
+    default: true
+  }
 });
 
 export default mongoose.model("Produto", produto);
