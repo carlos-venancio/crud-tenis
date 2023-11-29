@@ -5,7 +5,7 @@ import produtoRouter from "./src/routes/produto.route.js";
 import marcaRouter from "./src/routes/marca.route.js";
 import testeRouter from "./src/routes/teste.route.js";
 import tagRouter from "./src/routes/tag.route.js";
-import swaggerSpec from "./src/swaggerConfig.js";
+import swaggerSpec from "./src/config/swaggerConfig.js";
 import swaggerUi from "swagger-ui-express";
 
 // conexão com mongo
