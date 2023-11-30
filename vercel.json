@@ -1,0 +1,21 @@
+{
+    "name":"marcha",
+    "type": "spa",
+    "version":"1.0.0",
+    "routes": {
+        "api":"/backend",
+        "public":"/frontend"
+    },
+    "buildCommand":{
+        "api":"cd /backend && npm install",
+        "frotend":"cd /backend && npm install"
+    },
+    "git":{
+        "deploymentEnabled": {
+            "carlos": false,
+            "Arthur": false,
+            "arnold": false,
+            "branch-erick": false
+        }
+    }
+}
