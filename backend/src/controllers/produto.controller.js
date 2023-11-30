@@ -5,11 +5,17 @@ export async function cadastrarProduto(req, res) {
 
   try {
     console.log(req.body);
+    req.body.imagem = req.file.path;
+    console.log(JSON.parse(req.body.cores));
+    // let cores = Object.(req.body.cores);
+    // req.body.cores = cores;
+    req.body.tags = JSON.parse(req.body.tags);
+    req.fk_marcanome = req.body.marcanome;
     // validar campos
     // validar chaves estrangeiras
     // formatar campos para se adequarem ao esquema
 
-   await repositories.cadastrarProduto(req.body);
+    await repositories.cadastrarProduto(req.body);
 
     res.status(statusCode).send({
       status: statusCode,

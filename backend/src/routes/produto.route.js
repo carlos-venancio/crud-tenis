@@ -1,8 +1,6 @@
 import { Router } from "express";
 import { cadastrarProduto } from "../controllers/produto.controller.js";
 import uploader from "../config/multer.js";
-import multer from "multer";
-import { descriptografarTokenUsuario } from "../middlewares/global.middleware.js";
 import { validarMarca } from "../middlewares/produto.middleware.js"
 
 const routes = Router();
@@ -75,6 +73,6 @@ const routes = Router();
  */
 
 // rota para cadastrar um novo produto
-routes.post('/', uploader.single('imagem'), validarMarca,cadastrarProduto)
+routes.post('/',  uploader.single('imagem'), cadastrarProduto)
 
 export default routes 
