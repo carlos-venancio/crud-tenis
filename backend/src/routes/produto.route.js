@@ -53,7 +53,7 @@ const routes = Router();
  *               example: 32
  *             cores:
  *               type: array
- *               itemms: 
+ *               items: 
  *                  type: object
  *                  description: Relação de cor e quantidade
  *                  example: {"azul claro": 2}
@@ -61,7 +61,8 @@ const routes = Router();
  *               type: array
  *               items:
  *                  type: string
- *                  example: corrida; com cadarço
+ *                  example: corrida
+ *                  example: com cadarço
  *               
  *     responses:
  *       200:
