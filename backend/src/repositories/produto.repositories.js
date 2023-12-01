@@ -1,4 +1,4 @@
-import produtoModel from "../models/produto.js";
+import produtoModel from "../models/Produto.js";
 
 async function cadastrarProduto(body) {
  
