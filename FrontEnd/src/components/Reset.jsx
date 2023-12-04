@@ -88,7 +88,7 @@ function Reset() {
           </div>
         </div>
 
-        <button onClick={handlePassword} className="flex justify-center items-center bg-orange-400 self-center w-[360px] max-w-full mt-6 px-5 rounded-sm">
+        <button onClick={handlePassword} className="flex justify-center items-center bg-stone-900 self-center w-[360px] max-w-full mt-6 px-5 rounded-sm">
           <div className="flex items-center gap-2">
 
             <div className="text-white text-sm font-bold leading-10 tracking-normal uppercase">

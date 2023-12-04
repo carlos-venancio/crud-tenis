@@ -42,7 +42,7 @@ function Forget() {
   return (
     <div className="bg-white flex flex-col m-auto ">
       <div className="items-stretch rounded border border-[color:var(--gray-100,#E4E7E9)] shadow-2xl bg-white self-center flex w-[424px] max-w-full flex-col mt-24 p-8 border-solid max-md:mt-10 max-md:px-5">
-        <div className="text-zinc-900 text-center text-xl font-semibold leading-7">
+        <div className="text-stone-900 text-center text-xl font-semibold leading-7">
           Forget Password
         </div>
 
@@ -65,7 +65,7 @@ function Forget() {
           </div>
         </div>
 
-        <button onClick={handleSendCode} className="justify-center items-center bg-orange-400 self-center flex flex-row w-[360px] max-w-full mt-6 px-5 rounded-sm">
+        <button onClick={handleSendCode} className="justify-center items-center bg-stone-900 self-center flex flex-row w-[360px] max-w-full mt-6 px-5 rounded-sm">
           <div className="text-white text-sm font-bold leading-10 tracking-normal uppercase">
             Send Code
           </div>
@@ -102,7 +102,7 @@ function Forget() {
 
         <div className="text-orange-400 text-sm leading-5 mt-6">
           <span className=" text-neutral-600">You may contact </span>
-          <span className="font-medium text-orange-400">Customer Service</span>
+          <span className="font-medium text-stone-900">Customer  Service </span>
           <span className=" text-neutral-600">
            
             for help restoring access to your account.

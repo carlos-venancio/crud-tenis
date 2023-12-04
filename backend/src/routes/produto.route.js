@@ -58,10 +58,10 @@ const routes = Router();
  *               example: 32
  *             cores:
  *               type: array
- *               items:
+ *               items: 
  *                  type: object
  *                  description: Relação de cor e quantidade
- *                  example: {"azul claro": 2}
+ *                  example: [{"azul claro": 2},{"preto": 1}]
  *             tags:
  *               type: array
  *               items:

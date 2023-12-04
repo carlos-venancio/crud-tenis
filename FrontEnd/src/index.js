@@ -15,7 +15,7 @@ import Cart from "./components/Cart"
 import Favorites from './components/Favorites';
 import Profile from './components/ProfilePage';
 import Verify from './components/Verify';
-
+import Search from './components/Search';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +25,10 @@ const router = createBrowserRouter([
       {
         path : "/",
         element: <Home/>,
+      },
+      {
+        path : "/search",
+        element: <Search/>,
       },
       {
         path : "/cart",

@@ -141,7 +141,7 @@ const SignUp = () => {
         </div>
 
         {/* Botão de Registro */}
-        <button onClick={handleSignUp} className="flex items-center justify-center bg-orange-400 w-[360px] max-w-full mt-6 px-5 rounded-sm">
+        <button onClick={handleSignUp} className="flex items-center justify-center bg-stone-900 w-[360px] max-w-full mt-6 px-5 rounded-sm">
           <div className="flex items-center justify-center gap-2">
             <div className="text-white text-sm font-bold leading-10 tracking-normal uppercase">
               Sign up
@@ -186,7 +186,7 @@ const SignUp = () => {
         </div>
 
       </div>
-    </div>
+    </div>  
 
   )
 };

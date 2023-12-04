@@ -7,6 +7,7 @@ import fone from "../img/Headphones.png"
 import caixa from "../img/Untitled.png"
 import trofeu from "../img/Trophy.png"
 import cartao from "../img/CreditCard.png"
+import Search from './Search';
 
 
 function Home(){
@@ -54,7 +55,10 @@ function Home(){
 
 
     return(
+        
+
         <div className='space-y-20'>
+            <Search/>
             <div className='flex items-center justify-between mt-7'>
                 <div className="mx-auto flex items-center h-auto rounded-lg shadow-lg space-x-0.5 sm:space-x-0.5">
                     {/* Imagem Principal (Maior) */}
