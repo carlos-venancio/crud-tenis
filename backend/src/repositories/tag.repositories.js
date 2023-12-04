@@ -4,6 +4,7 @@ async function pegarTodos() {
   return await tagModel.find();
 }
 
+
 export default {
     pegarTodos
 }

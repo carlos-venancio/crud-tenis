@@ -1,43 +1,55 @@
-import marcaRepositories from "../repositories/marca.repositories.js";
-import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
 import mongoose from "mongoose";
+import produtoRepositories from "../repositories/produto.repositories.js";
+import { validarProduto } from "../utils/validarProduto.js";
 
-export async function validarMarca(marcanome) {
-  if (!marcanome) return "Insira uma marca";
-
-  const marca = await marcaRepositories.pegarUnico(marcanome);
-
-  if (!marca) return "Marca não encontrada";
-}
-
-dotenv.config();
-const secretkey = process.env.SECRET_KEY;
-
-export function validarId(token) {
-
-  const id = jwt.verify(token, secretkey, (error, decoded) => {
-    if (!decoded) return [false, error.message];
-
-    return [true,decoded.userId];
-  });
-
-  if (id[0] && !mongoose.Types.ObjectId.isValid(id[1]))
-    return [false,"O id deve ter um formato válido"];
-
-  return id;
-}
-
-export async function validarProduto(body) {
+export async function validarIdProduto(req, res, next) {
   try {
-    const marcaValidada = await validarMarca(body.marcanome)
+    const id = req.params.id;
 
-    if (marcaValidada) throw new Error(marcaValidada);
+    // valida o o formato do id do produto
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      res.status(400).send({
+        message: "Insira um id de produto válido!",
+      });
+      return;
+    }
 
-    const id = validarId(body.token);
+    const produto = await produtoRepositories.consultarProdutoPorId(
+      id,
+      req.body.fk_userId
+    );
 
-    return id;
+    // valida se o produto existe
+    if (!produto) {
+      res.status(404).send({
+        message: "Produto não encontrado",
+      });
+      return;
+    }
+
+    next();
   } catch (e) {
-    return [false, e.message];
+    res.status(500).send({
+      message: e.message,
+    });
+  }
+}
+
+export async function validarInfoProduto(req, res, next) {
+  try {
+    const id = await validarProduto(req.body);
+
+    if (!id[0]) {
+       res.status(400).send({
+        message: id[1],
+      });
+      return
+    }
+      req.body = id[1]
+    next();
+  } catch (e) {
+    res.status(500).send({
+      message: e.message,
+    });
   }
 }

@@ -5,7 +5,6 @@ async function pegarTodos() {
 }
 
 async function pegarUnico(marca){
-  console.log(marca)
   return await marcaModel.findOne({
     pk_marcanome: marca
   })
