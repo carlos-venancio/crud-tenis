@@ -42,13 +42,10 @@ const produto = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  cores: [
-    {
-      type: [Map, "Insira o objeto corretamente: 'cor': qtd"],
+  cores: {
+      type: Map,
       of: Number,
-      lowercase: true,
     },
-  ],
   fk_tags: [
     {
       type: String,

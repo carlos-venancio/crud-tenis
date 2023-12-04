@@ -1,7 +1,11 @@
 import { Router } from "express";
-import { cadastrarProduto } from "../controllers/produto.controller.js";
+import controller from "../controllers/produto.controller.js";
 import uploader from "../config/multer.js";
-import { validarMarca } from "../middlewares/produto.middleware.js"
+import { descriptografarTokenUsuario } from "../middlewares/global.middleware.js";
+import {
+  validarIdProduto,
+  validarInfoProduto,
+} from "../middlewares/produto.middleware.js";
 
 const routes = Router();
 
@@ -53,7 +57,7 @@ const routes = Router();
  *               example: 32
  *             cores:
  *               type: array
- *               itemms: 
+ *               itemms:
  *                  type: object
  *                  description: Relação de cor e quantidade
  *                  example: {"azul claro": 2}
@@ -61,8 +65,8 @@ const routes = Router();
  *               type: array
  *               items:
  *                  type: string
- *                  example: corrida; com cadarço
- *               
+ *                  example: corrida
+ *
  *     responses:
  *       200:
  *         description: Sucesso ao cadastrar produto
@@ -73,6 +77,38 @@ const routes = Router();
  */
 
 // rota para cadastrar um novo produto
-routes.post('/',  uploader.single('imagem'), cadastrarProduto)
+routes.post("/", uploader.imagemECampos.single("imagem"), controller.cadastrarProduto);
 
-export default routes 
+// rota para consultar todos os produtos de um usuario
+routes.get(
+  "/todos/:token",
+  descriptografarTokenUsuario,
+  controller.consultarTodosPorUsuario
+);
+
+// rota para deletar um usuario
+routes.delete(
+  "/:id/:token",
+  descriptografarTokenUsuario,
+  validarIdProduto,
+  controller.deletarProduto
+);
+
+// rota para atualizar os dados do produto
+routes.patch("/campo/:id", validarInfoProduto, validarIdProduto, controller.alterarCampos);
+
+// rota para alterar a visualização do produto
+routes.patch(
+  "/hidden/:id/:token",
+  descriptografarTokenUsuario,
+  validarIdProduto,
+  controller.alterarVisibilidade
+);
+
+// rota para atualizar a imagem do produto
+routes.patch("/imagem/:id/:token", descriptografarTokenUsuario, validarIdProduto, uploader.imagem.single("imagem"), controller.alterarImagem);
+
+// rota para consultar um produto especifico
+routes.get("/:id/:token", descriptografarTokenUsuario, validarIdProduto, controller.consultarProdutoPorId);
+
+export default routes;
