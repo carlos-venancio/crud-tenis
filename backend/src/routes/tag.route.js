@@ -32,7 +32,7 @@ const routes = Router();
  *                          type: array
  *                          items:
  *                              type: string
- *                              example: corrida
+ *                              example: [corrida,com cadarço]
  *       400:
  *         description: Credenciais inválidas
  *       500:

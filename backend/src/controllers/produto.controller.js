@@ -22,8 +22,7 @@ async function cadastrarProduto(req, res) {
     });
   } catch (e) {
     res.status(500).send({
-      message: "Falha ao cadastrar produto",
-      desc: e.message,
+      message:  e.message,
     });
   }
 }
@@ -40,8 +39,7 @@ async function consultarTodosPorUsuario(req, res) {
     });
   } catch (e) {
     res.status(500).send({
-      message: "Falha ao consultar produtos",
-      desc: e.message,
+      message: e.message,
     });
   }
 }
@@ -56,8 +54,7 @@ async function deletarProduto(req, res) {
     });
   } catch (e) {
     res.status(500).send({
-      message: "Falha ao deletar produto",
-      desc: e.message,
+      message: e.message,
     });
   }
 }
@@ -77,8 +74,7 @@ async function alterarVisibilidade(req, res) {
     });
   } catch (e) {
     res.status(500).send({
-      message: "Falha ao alterar visibilidade do produto",
-      desc: e.message,
+      message: e.message,
     });
   }
 }
@@ -96,8 +92,7 @@ async function alterarCampos(req,res) {
 
   } catch (e) {
     res.status(500).send({
-      message: "Falha ao alterar campos do produto",
-      desc: e.message,
+      message:  e.message,
     });
   }
 
@@ -118,12 +113,11 @@ async function alterarImagem(req,res) {
 
     res.status(200).send({
       message: "Imagem alterada com sucesso!",
-      "data": produto
+      data: produto
     });
   } catch (e) {
     res.status(500).send({
-      message: "Falha ao alterar imagem produto",
-      desc: e.message,
+      message:e.message,
     });
   }
 }
@@ -140,8 +134,7 @@ async function consultarProdutoPorId(req,res) {
 
   } catch (e) {
     res.status(500).send({
-      message: "Falha ao alterar imagem produto",
-      desc: e.message,
+      message:  e.message,
     });
   }
 }

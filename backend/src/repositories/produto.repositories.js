@@ -1,5 +1,6 @@
 import produtoModel from "../models/Produto.js";
 
+// cadastra um novo produto
 async function cadastrarProduto(body) {
 
   const produto = {
@@ -19,24 +20,28 @@ async function cadastrarProduto(body) {
   return await newProduto.save();
 }
 
+// consulta todos os produtos do usuario
 async function consultarTodosPorUsuario(id) {
   return await produtoModel.find(
     {
       fk_userId: id,
       active: true,
     },
-    "-active -__v"
+    "-active -__v -fk_userId", { limit: 10 }
   );
 }
 
+// deleta um produto
 async function deletarProduto(id) {
   return await produtoModel.findByIdAndDelete(id);
 }
 
+// consulta um produto pelo id dele
 async function consultarProdutoPorId(id, userId) {
-  return await produtoModel.findOne({ _id: id, fk_userId: userId },'-active -__v');
+  return await produtoModel.findOne({ _id: id, fk_userId: userId },'-active -__v -fk_userId');
 }
 
+// esconde um produto, mas mantei ele ainda cadastrado
 async function alterarVisibilidade(id) {
   return await produtoModel.findByIdAndUpdate(
     id,
@@ -45,6 +50,7 @@ async function alterarVisibilidade(id) {
   );
 }
 
+// altera os campos de um produto
 async function alterarCampos(id, body) {
   
   const {
@@ -60,18 +66,19 @@ async function alterarCampos(id, body) {
   } = await produtoModel.findByIdAndUpdate(id, body, { new: true });
 
   return {
-    marcanome: fk_marcanome,
+    fk_marcanome,
     imagem,
     modelo,
     genero,
-    id: _id,
+    _id,
     preco,
     tamanho,
     cores,
-    tags: fk_tags,
+    fk_tags,
   };
 }
 
+// altera a imagem de um produto
 async function alterarImagem(id, url) {
   const {
     fk_marcanome,
@@ -86,15 +93,15 @@ async function alterarImagem(id, url) {
   } = await produtoModel.findByIdAndUpdate(id, { imagem: url }, { new: true });
 
   return {
-    marcanome: fk_marcanome,
+    fk_marcanome,
     imagem,
     modelo,
     genero,
-    id: _id,
+    _id,
     preco,
     tamanho,
     cores,
-    tags: fk_tags,
+    fk_tags,
   };
 }
 
