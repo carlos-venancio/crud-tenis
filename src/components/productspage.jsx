@@ -274,16 +274,16 @@ function Productspage(){
                 </div>
                 
             </div>
-
+                <div className='flex items-center justify-center '>
                 <div className='border mt-20 '>
-                    <div>
-                        <h1>Informações</h1>
+                    <div className='border p-3 '>
+                        <h1 className='mr-3'>Informações</h1>
                     </div>
-                    <div className='flex items-center justify-between mt-5'>
+                    <div className='flex items-center space-x-20 mt-5'>
 
                         <div>
                             <h1>Descrição:</h1>
-                            <p className='mt-3'>É com grande entusiasmo que apresentamos o novo Nike Air Precision Pro<br/>um calçado que eleva os padrões 
+                            <p className='mt-3 ml-5 text-justify'>É com grande entusiasmo que apresentamos o novo Nike Air Precision Pro<br/>um calçado que eleva os padrões 
                             de desempenho e estilo. Projetado para<br/> se destacar tanto nas quadras quanto nas ruas, este tênis incorpora<br/> a 
                             essência da inovação e qualidade que define a marca Nike.<br/><br/>
                             O Nike Air Precision Pro se destaca pelo seu design inovador, <br/>harmonizando linhas elegantes com detalhes ousados. 
@@ -291,45 +291,56 @@ function Productspage(){
                                  moderno e arrojado. As opções de cores<br/> contemporâneas oferecem escolhas que se alinham ao seu estilo único.</p>
                         </div>
                         
-                        <div>
+                        <div className=' pr-6 border-r'>
                             <h1>Nossas Funcionalidades:</h1>
-                            <p className='mt-3 flex items-center justify-start'>
+                            <p className='mt-3 flex items-center justify-start '>
                                 <img
+                                className='mr-2'
                                 src={medal}
                                 />
                                 Garantia de 1 ano
                             </p>
                             <p className='flex items-center justify-start mt-2'>
                                 <img
+                                className='mr-2'
                                 src={truck}
                                 />
                                 Frete grátis e entrega rápida
                             </p>
                             <p className='flex items-center justify-start mt-2'>
                                 <img
+                                className='mr-2'
                                 src={hand}
                                 />
                                 100% de garantia de devolução do dinheiro
                             </p>
                             <p className='flex items-center justify-start mt-2'>
                                 <img
+                                className='mr-2'
                                 src={headphone}
                                 />
                                 Suporte ao cliente 24/7
                             </p>
                             <p className='flex items-center justify-start mt-2'>
                                 <img
+                                className='mr-2'
                                 src={credit}
                                 />
                                 Método de pagamento seguro
                             </p>
                         </div>
-
-                        <div>
-                            <h1>Dados de Entrega:</h1>
-                            <p></p>
+                        
+                        <div className='flex itens-center justify-start'>
+                            <div >
+                                <h1>Dados de Entrega:</h1>
+                                <p><strong>entrega:</strong>2 - 4 dias</p>
+                                <p><strong>enviado de:</strong>Minas Gerais</p>
+                                <p><strong>Taxa:</strong>Definida pela distancia</p>
+                                <p><strong>Remetente:</strong>Sneaker House</p>
+                            </div>
                         </div>
                     </div>
+                </div>
                 </div>
         </div>
     );
