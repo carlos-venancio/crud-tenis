@@ -15,7 +15,8 @@ import Cart from "./components/Cart"
 import Favorites from './components/Favorites';
 import Profile from './components/ProfilePage';
 import Verify from './components/Verify';
-import Search from './components/Search';
+import Products from "./components/products"
+import Productspage from "./components/productspage"
 
 const router = createBrowserRouter([
   {
@@ -27,8 +28,12 @@ const router = createBrowserRouter([
         element: <Home/>,
       },
       {
-        path : "/search",
-        element: <Search/>,
+        path : "products",
+        element:  <Products/>,
+      },
+      {
+        path : "/productspage",
+        element:  <Productspage/>,
       },
       {
         path : "/cart",

@@ -1,48 +1,8 @@
 import React from "react";
-import Arrow from "../img/ArrowRight.png"
-import Api from "../Api"
-import { useNavigate } from "react-router-dom";
-
+import Arrow from "../img/ArrowRight.png";
 
 function Verify() {
-
-  const navigate = useNavigate()
-
-  function Resend(){
-    navigate("/forget")
-  }
-
-  
-
-    const handleSendCode = async () => {
-      try {
-       
-        const code = document.getElementById('code').value;
-        const email = localStorage.getItem("email")
-  
-        const data = {
-          email: email,
-          code: code
-        };
-      
-        const response = await Api.post("https://api-login-mn7h.onrender.com/recuperarSenha/validar", data);
-  
-        console.log(response.data);
-        
-        const token = response.data.token;
-        localStorage.setItem("token", token);
-  
-      } catch (error) {
-        
-        console.error('Erro na solicitação:', error);
-      }
-    };
-
-
-
-
   return (
-
     <div className="items-stretch rounded border border-[color:var(--gray-100,#E4E7E9)] shadow-2xl bg-white flex flex-col px-8 border-solid max-md:px-5 w-[424px] m-auto p-8 mt-24">
       <div className="text-zinc-900 text-center text-xl font-semibold leading-7 mt-8">
         Verify Your Email Address
@@ -52,7 +12,7 @@ function Verify() {
       </div>
       <div className="justify-between items-stretch flex gap-5 mt-6">
         <div className="text-zinc-900 text-sm leading-5">Verification Code</div>
-        <button onClick={Resend} className="text-sky-400 text-sm font-medium leading-5 whitespace-nowrap">
+        <button className="text-sky-400 text-sm font-medium leading-5 whitespace-nowrap">
           Resend Code
         </button>
       </div>
@@ -60,15 +20,14 @@ function Verify() {
       <div className="self-center border border-[color:var(--gray-100,#E4E7E9)] bg-white flex w-[360px] shrink-0 h-11 flex-col mt-2 rounded-sm border-solid">
           <div className="relative">
             <input
-              id="code"
-              placeholder="Code"
+              placeholder="Email"
               className="py-2 px-4 w-full h-full border-none rounded-sm focus:outline-none focus:border-blue-500"
             />
           </div>
         </div>
 
 
-        <button onClick={handleSendCode} className="justify-center items-center bg-orange-400 self-center flex flex-row w-[360px] max-w-full mt-6 px-5 rounded-sm">
+        <button className="justify-center items-center bg-orange-400 self-center flex flex-row w-[360px] max-w-full mt-6 px-5 rounded-sm">
           <div className="text-white text-sm font-bold leading-10 tracking-normal uppercase">
             Verify Me
           </div>
@@ -76,7 +35,6 @@ function Verify() {
             loading="lazy"
             src={Arrow}
             className="aspect-square object-contain object-center w-5 overflow-hidden self-center shrink-0 ml-2"
-            alt="arrow"
           />
         </button>
 

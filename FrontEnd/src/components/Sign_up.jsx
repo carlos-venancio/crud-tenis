@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Api from '../Api';
 
 import Google from "../img/Google.png";
@@ -37,7 +37,7 @@ const SignUp = () => {
 
       const response = await Api.post('https://api-login-mn7h.onrender.com/', data);
 
-      if (response.status === 200 === 201) {
+      if (response.status === 200) {
         // toast.success('Login successful!', { autoClose: 5000 });
 
         const token = response.data.token;
@@ -48,12 +48,10 @@ const SignUp = () => {
 
       }
     } catch (error) {
-      console.error('Login Error:', error.response.data.error);
+      console.error('Login Error:', error.response.data.message);
       // toast.error(error.response.data.error);
     }
   };
-
-
 
 
 
@@ -141,7 +139,7 @@ const SignUp = () => {
         </div>
 
         {/* Botão de Registro */}
-        <button onClick={handleSignUp} className="flex items-center justify-center bg-stone-900 w-[360px] max-w-full mt-6 px-5 rounded-sm">
+        <button onClick={handleSignUp} className="flex items-center justify-center bg-orange-400 w-[360px] max-w-full mt-6 px-5 rounded-sm">
           <div className="flex items-center justify-center gap-2">
             <div className="text-white text-sm font-bold leading-10 tracking-normal uppercase">
               Sign up
@@ -150,7 +148,6 @@ const SignUp = () => {
               loading="lazy"
               src={Arrow}
               className="w-5 h-5 object-contain"
-              alt="arrow"
             />
           </div>
         </button>
@@ -168,7 +165,6 @@ const SignUp = () => {
             loading="lazy"
             srcSet={Google}
             className="aspect-square object-contain object-center w-5 overflow-hidden shrink-0 max-w-full"
-            alt="google"
           />
           <div className="text-neutral-600 text-center text-sm leading-5 self-center grow whitespace-nowrap my-auto">
             Login with Google
@@ -186,7 +182,7 @@ const SignUp = () => {
         </div>
 
       </div>
-    </div>  
+    </div>
 
   )
 };

@@ -7,7 +7,6 @@ import fone from "../img/Headphones.png"
 import caixa from "../img/Untitled.png"
 import trofeu from "../img/Trophy.png"
 import cartao from "../img/CreditCard.png"
-import Search from './Search';
 
 
 function Home(){
@@ -55,10 +54,7 @@ function Home(){
 
 
     return(
-        
-
         <div className='space-y-20'>
-            <Search/>
             <div className='flex items-center justify-between mt-7'>
                 <div className="mx-auto flex items-center h-auto rounded-lg shadow-lg space-x-0.5 sm:space-x-0.5">
                     {/* Imagem Principal (Maior) */}
@@ -101,49 +97,53 @@ function Home(){
 
 
 
-        {/* <nav className="flex items-center justify-between">
+        <nav className="flex items-center justify-between">
             <div className="mx-auto flex justify-between items-center max-w-4xl h-20 space-x-4 border border-solid border-slate-50 rounded-lg shadow-2xl">
         
-                <div className="flex justify-between items-center space-x-10 m-4">
-                    <div className="flex justify-between items-center space-x-2 pr-2 border-r">
+                <div className="flex justify-between items-center space-x-2 sm:space-x-5 m-4">
+                    <div className="flex justify-between items-center space-x-2 sm:pr-2 border-r">
                         <img 
+                        className='w-5 sm:w-10 h-5 sm:h-10 '
                         src={caixa}/>
                         <div>
-                            <p className="text-sm">Fasted Delivery</p>
-                            <p className="text-xs">Delivery in 24/H</p>
+                            <p className="text-[10px] sm:text-sm">Fasted Delivery</p>
+                            <p className="text-[8px] sm:text-xs">Delivery in 24/H</p>
                         </div>
                     </div>
                     
                     <div className="flex justify-between items-center space-x-2 pr-2 border-r">
                         <img 
+                        className='w-5 sm:w-10 h-5 sm:h-10 '
                         src={trofeu}/>
                         <div>
-                            <p className="text-sm">24 Hours Return</p>
-                            <p className="text-xs">100% money-back guarante</p>
+                            <p className="text-[10px] sm:text-sm">24 Hours Return</p>
+                            <p className="text-[8px] sm:text-xs">100% money-back guarante</p>
                         </div>
                     </div>
 
-                    <div className="flex justify-between items-center space-x-2 pr-2  border-r">
-                        <img                     
+                    <div className="flex justify-between items-center space-x-2 pr-2 border-r">
+                        <img   
+                        className='w-5 sm:w-10 h-5 sm:h-10 '                  
                         src={cartao}/>
                         <div>
-                            <p className="text-sm">Secure Payment</p>   
-                            <p className="text-xs">Your money is safe</p>   
+                            <p className="text-[10px] sm:text-sm">Secure Payment</p>   
+                            <p className="text-[8px] sm:text-xs">Your money is safe</p>   
                         </div>
                     </div>
 
                     <div className="flex justify-between items-center space-x-2 ">
                         <img 
+                        className='w-5 sm:w-10 h-5 sm:h-10 '
                         src={fone}/>
                         <div>
-                            <p className="text-sm">Support 24/7</p>
-                            <p className="text-xs">Live contact/message</p>
+                            <p className="text-[10px] sm:text-sm">Support 24/7</p>
+                            <p className="text-[8px] sm:text-xs">Live contact/message</p>
                         </div>
                     </div>
                 </div>
 
             </div>
-        </nav> */}
+        </nav>
 
         <div className='max-w-screen-xl mx-auto'>
             <Slider {...settings}>
