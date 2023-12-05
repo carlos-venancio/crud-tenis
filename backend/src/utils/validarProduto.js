@@ -45,7 +45,7 @@ export async function validarProduto(body) {
   body.fk_marcanome = body.marcanome
 
   const { fk_marcanome, token, modelo, genero, preco, tamanho, cores, fk_tags } = body;
-
+  console.log(body)
   if ( !fk_marcanome ||!token ||!modelo ||!genero ||!preco || !tamanho ||!cores || !fk_tags )  return [false,"Insira todos os dados!"];
   
   const marcavalidada = await validarMarca(body.fk_marcanome);
