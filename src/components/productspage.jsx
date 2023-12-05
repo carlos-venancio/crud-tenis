@@ -8,7 +8,7 @@ import headphone from "../img/Headphone.png"
 import hand from "../img/Handshake.png"
 import credit from "../img/CreditCard1.png"
 import truck from "../img/Truck.png"
-
+import heartfav from "../img/heart_favorite.svg"
 
 
 
@@ -32,7 +32,7 @@ function Productspage(){
         setCorSelecionada(corSelecionada === cor ? null : cor);
     };
 
-    const coresDisponiveis = ['AZUL', 'VERMELHO', 'BRANCO'];
+    const coresDisponiveis = ['Azul', 'Vermelho', 'Branco'];
 
 
 
@@ -104,27 +104,27 @@ function Productspage(){
     return(
 
         <div className=' flex-col items-center justify-center '>
-            <div className='flex items-center justify-center mt-10'>
+            <div className='flex items-start justify-center   pt-10  '>
                 
-                <div className='flex items-center justify-center'>
+                <div className='flex items-center justify-center '>
                     <div className='flex-col items-center h-auto rounded-lg'>
 
-                        <div className="flex items-center justify-center border">
+                        <div className="flex items-center justify-center  ">
                             <a href={productLinks[currentImage]} target="_blank" >
                                 <img
                                     src={imageUrls[currentImage]}
                                     alt={`Product ${currentImage + 1}`}
-                                    className="w-64 h-40 sm:w-full sm:h-72"
+                                    className="w-64 h-40 sm:w-full sm:h-96  border p-3 "
                                 />
                             </a>
                         </div>
 
                         <div className='mt-5'>
-                            <div className='flex justify-center max-w-screen-xl mx-auto'>
+                            <div className='flex justify-center max-w-screen-xl  space-x-4 mx-auto border'>
                                 <Slider {...settings} >
                                     {brands.map((brand, index) => (
-                                        <div key={index} className="flex justify-center max-w-8 sm:w-20 max-h-26 border">
-                                            <img src={brand} alt={`Brand ${index + 1}`} className="ml-3 sm:ml-1 sm:mr-1 w-14 sm:w-20" />
+                                        <div key={index} className="flex justify-center max-w-8 sm:w-20 max-h-26 border-r">
+                                            <img src={brand} alt={`Brand ${index + 1}`} className="ml-3 sm:ml-1 sm:mr-1 w-14 sm:w-32 " />
                                         </div>
                                     ))}
                                 </Slider>
@@ -136,43 +136,43 @@ function Productspage(){
 
 
 
-                <div className='flex items-center justify-center ml-10'>
-                    <div className='flex-col items-center h-auto rounded-lg'>
+                <div className='flex items-center justify-center ml-10 drop-shadow-lg rounded-md'>
+                    <div className='flex-col items-center h-auto rounded-lg '>
 
-                        <div>
+                        <div className='border-b p-2  bg-white rounded-t-lg'>
                             <div>
-                                <h1>nome muito grande do produto</h1>
+                                <h1 className='text-2xl'>Tênis Nike Air Force 1 "07 Masculino</h1>
                             </div>
 
-                            <div className='flex items-center  space-x-6 mt-2'>
+                            <div className='flex items-center  space-x-10 mt-2'>
 
                                 <div>
-                                    <p>marca: <strong>nike</strong></p>
-                                    <p>genero: <strong>feminino</strong></p>
+                                    <p className='text-sm'>Marca: <strong>nike</strong></p>
+                                    <p className='mt-1 text-sm'>Genero: <strong>feminino</strong></p>
                                 </div>
                                 
-                                <div>
-                                    <p>Tags: </p>
-                                    <p>corrida  sem cardaço</p>
+                                <div className=''>
+                                    <p className='text-sm'>Tags: </p>
+                                    <p className='mt-2 p-1 text-xs border rounded-2xl'>corrida  </p>
                                 </div>
                             </div>
 
-                            <div className='mt-2'>
-                                <h1>preço do produtin</h1>
+                            <div className='mt-2 ml-2'>
+                                <h1 className='text-3xl text-red-600'>R$:666,6</h1>
                             </div>
 
                         </div>
 
-                        <div className='mt-4'>
+                        <div className=' p-4 bg-white'>
                             
                             <div>
-                                <h1>tamanhos:</h1>
+                                <h1 className='text-sm'>Tamanhos:</h1>
                                     <div className='flex items-center space-x-4 mt-2 '>
                                         {tamanhosDisponiveis.map((tamanho) => (
                                         <p
                                             key={tamanho}
                                             onClick={() => handleTamanhoClick(tamanho)}
-                                            className={`flex justify-center rounded-lg w-10 border cursor-pointer ${
+                                            className={`flex justify-center rounded-lg w-10 border text-sm  cursor-pointer ${
                                             tamanhoSelecionado === tamanho ? 'bg-gray-300' : ''
                                             }`}
                                         >
@@ -180,17 +180,17 @@ function Productspage(){
                                         </p>
                                         ))}
                                     </div>
-                                <p>Tamanho Selecionado: {tamanhoSelecionado || 'Nenhum'}</p>
+                                {/* <p className='text-sm mt-2'>Tamanho Selecionado: {tamanhoSelecionado || 'Nenhum'}</p> */}
                             </div>
 
                             <div className='mt-4'>
-                                <h1>cores:</h1>
+                                <h1 className='text-sm'>Cores:</h1>
                                     <div className='flex items-center space-x-4 mt-2 '>
                                         {coresDisponiveis.map((cor) => (
                                         <p
                                             key={cor}
                                             onClick={() => handleClick(cor)}
-                                            className={`flex justify-center rounded-lg w-auto  border cursor-pointer ${
+                                            className={`flex justify-center rounded-lg w-auto text-sm border p-1 cursor-pointer ${
                                             corSelecionada === cor ? 'bg-gray-300 ' : ''
                                             }`}
                                         >
@@ -198,10 +198,10 @@ function Productspage(){
                                         </p>
                                         ))}
                                     </div>
-                                <p className="mt-3">Cor Selecionada: {corSelecionada || 'Nenhuma'}</p>
+                                {/* <p className="mt-3">Cor Selecionada: {corSelecionada || 'Nenhuma'}</p> */}
                             </div>
 
-                            <div className=' flex justify-start mt-4'>
+                            <div className=' flex justify-start mt-6'>
                                 <div className="flex items-center justify-between space-x-3 h-6 w-20 border ">
 
                                     <button
@@ -226,48 +226,32 @@ function Productspage(){
                         </div>
 
 
-                        <div className='flex items-center justify-between space-x-1 mt-10'>
+                        <div className='flex items-center justify-between space-x-1 rounded-b-lg  p-6 bg-white'>
 
                             <div className='flex items-center justify-between space-x-2'>
                                 <div>
-                                    <button className='border p-1 bg-red-600 rounded font-base text-white'>
+                                    <button className='border p-2 bg-red-100 rounded  text-base border-red-600  text-red-600'>
                                         Adicionar ao Carrinho
                                     </button>
                                 </div>
 
                                 <div>
-                                    <button className='border p-1 bg-red-600 rounded text-white'>
+                                    <button className='border p-2 bg-red-600  rounded text-base text-white'>
                                         Comprar Agora
                                     </button>
                                 </div>
 
                             </div>
 
-                            <div className='flex items-center justify-center'>
+                            
 
-                                <button
-                                className={`bg-transparent outline-none focus:outline-none transition-all ${
-                                    favorito ? 'text-red-500' : 'text-gray-500'
-                                }`}
-                                onClick={toggleFavorito}
-                                >
-                                    <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill={favorito ? 'red' : 'none'}
-                                    viewBox="0 0 24 24"
-                                    stroke={favorito ? 'red' : 'currentColor'}
-                                    className="h-6 w-6"
-                                    >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C16.09 3.81 17.76 3 19.5 3 22.58 3 25 5.42 25 8.5c0 3.78-3.4 6.86-8.55 11.15L12 21.35z"
-                                    />
-                                    </svg>
-                                </button>                         
+                            <div className='flex items-center '>
+                            <img className='w-7 h-7'
+                                src={heartfav}
+                                />                 
 
                             </div>
+
                         </div>
 
                     </div>
@@ -275,72 +259,74 @@ function Productspage(){
                 
             </div>
                 <div className='flex items-center justify-center '>
-                <div className='border mt-20 '>
-                    <div className='border p-3 '>
-                        <h1 className='mr-3'>Informações</h1>
-                    </div>
-                    <div className='flex items-center space-x-20 mt-5'>
+                    <div className='border mt-20 '>
+                        <div className='border p-3 '>
+                            <h1 className='mr-3'>Informações</h1>
+                        </div>
+                        <div className='flex items-center  mt-5'>
+                            <div className='flex  items-center justify-between space-x-20'>
+                                <div>
+                                    <h1 className='ml-5'>Descrição:</h1>
+                                    <p className='mt-3 ml-5 mb-5 text-justify'>É com grande entusiasmo que apresentamos o novo Nike Air Precision Pro<br/>um calçado que eleva os padrões 
+                                    de desempenho e estilo. Projetado para<br/> se destacar tanto nas quadras quanto nas ruas, este tênis incorpora<br/> a 
+                                    essência da inovação e qualidade que define a marca Nike.<br/><br/>
+                                    O Nike Air Precision Pro se destaca pelo seu design inovador, <br/>harmonizando linhas elegantes com detalhes ousados. 
+                                        A parte superior <br/>apresenta uma fusão de materiais premium, garantindo não apenas <br/>durabilidade, mas  também um visual
+                                        moderno e arrojado. As opções de cores<br/> contemporâneas oferecem escolhas que se alinham ao seu estilo único.</p>
+                                </div>
+                                
+                                <div className=' pr-6 border-r'>
+                                    <h1>Nossas Funcionalidades:</h1>
+                                    <p className='mt-3 flex items-center justify-start '>
+                                        <img
+                                        className='mr-2'
+                                        src={medal}
+                                        />
+                                        Garantia de 1 ano
+                                    </p>
+                                    <p className='flex items-center justify-start mt-2'>
+                                        <img
+                                        className='mr-2'
+                                        src={truck}
+                                        />
+                                        Frete grátis e entrega rápida
+                                    </p>
+                                    <p className='flex items-center justify-start mt-2'>
+                                        <img
+                                        className='mr-2'
+                                        src={hand}
+                                        />
+                                        100% de garantia de devolução do dinheiro
+                                    </p>
+                                    <p className='flex items-center justify-start mt-2'>
+                                        <img
+                                        className='mr-2'
+                                        src={headphone}
+                                        />
+                                        Suporte ao cliente 24/7
+                                    </p>
+                                    <p className='flex items-center justify-start mt-2'>
+                                        <img
+                                        className='mr-2'
+                                        src={credit}
+                                        />
+                                        Método de pagamento seguro
+                                    </p>
+                                </div>
+                            </div>  
 
-                        <div>
-                            <h1>Descrição:</h1>
-                            <p className='mt-3 ml-5 text-justify'>É com grande entusiasmo que apresentamos o novo Nike Air Precision Pro<br/>um calçado que eleva os padrões 
-                            de desempenho e estilo. Projetado para<br/> se destacar tanto nas quadras quanto nas ruas, este tênis incorpora<br/> a 
-                            essência da inovação e qualidade que define a marca Nike.<br/><br/>
-                            O Nike Air Precision Pro se destaca pelo seu design inovador, <br/>harmonizando linhas elegantes com detalhes ousados. 
-                                A parte superior <br/>apresenta uma fusão de materiais premium, garantindo não apenas <br/>durabilidade, mas  também um visual
-                                 moderno e arrojado. As opções de cores<br/> contemporâneas oferecem escolhas que se alinham ao seu estilo único.</p>
-                        </div>
-                        
-                        <div className=' pr-6 border-r'>
-                            <h1>Nossas Funcionalidades:</h1>
-                            <p className='mt-3 flex items-center justify-start '>
-                                <img
-                                className='mr-2'
-                                src={medal}
-                                />
-                                Garantia de 1 ano
-                            </p>
-                            <p className='flex items-center justify-start mt-2'>
-                                <img
-                                className='mr-2'
-                                src={truck}
-                                />
-                                Frete grátis e entrega rápida
-                            </p>
-                            <p className='flex items-center justify-start mt-2'>
-                                <img
-                                className='mr-2'
-                                src={hand}
-                                />
-                                100% de garantia de devolução do dinheiro
-                            </p>
-                            <p className='flex items-center justify-start mt-2'>
-                                <img
-                                className='mr-2'
-                                src={headphone}
-                                />
-                                Suporte ao cliente 24/7
-                            </p>
-                            <p className='flex items-center justify-start mt-2'>
-                                <img
-                                className='mr-2'
-                                src={credit}
-                                />
-                                Método de pagamento seguro
-                            </p>
-                        </div>
-                        
-                        <div className='flex itens-center justify-start'>
-                            <div >
-                                <h1>Dados de Entrega:</h1>
-                                <p><strong>entrega:</strong>2 - 4 dias</p>
-                                <p><strong>enviado de:</strong>Minas Gerais</p>
-                                <p><strong>Taxa:</strong>Definida pela distancia</p>
-                                <p><strong>Remetente:</strong>Sneaker House</p>
+                            <div className='flex ml-10 mr-10'>
+                                <div className=' ' >
+                                    <h1 className='text-[17px]'>Dados de Entrega:</h1>
+                                    <p className='mt-1'><strong>entrega: </strong>2 - 4 dias</p>
+                                    <p className='mt-1'><strong>enviado de: </strong>Minas Gerais</p>
+                                    <p className='mt-1'><strong>Taxa: </strong>Definida pela distancia</p>
+                                    <p className='mt-1'><strong>Remetente: </strong>Sneaker House</p>
+                                </div>
                             </div>
+
                         </div>
                     </div>
-                </div>
                 </div>
         </div>
     );

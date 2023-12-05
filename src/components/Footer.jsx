@@ -5,7 +5,7 @@ function Footer(){
     return(
         <div className="w-full">
                   {/* footer */}
-            <div className="items-center bg-zinc-900 self-stretch flex w-full flex-col mt-24 px-5 py-2">
+            <div className="items-center bg-zinc-900 self-stretch flex w-full flex-col  px-5 py-2">
               <div className="flex w-full max-w-[1320px] items-stretch justify-between gap-5 my-6 max-md:max-w-full max-md:flex-wrap max-md:justify-center">
 
                 <div className="items-stretch flex grow basis-[0%] flex-col self-start">
