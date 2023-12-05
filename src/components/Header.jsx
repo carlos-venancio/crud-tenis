@@ -41,10 +41,27 @@ function Header() {
                 <div className=" flex justify-between items-center w-full ">
                     
                     <div onClick={Home_Page} className="flex justify-between cursor-pointer ml-3 sm:ml-10 ">
-                        <div className="text-white text-2xl sm:text-3xl font-bold leading-10 tracking-tighter self-center">
+                        <div className="text-white text-base sm:text-3xl font-bold leading-10 tracking-tighter self-center">
                         sneaker house
                         </div>
                     </div> 
+
+                    <div className="relative flex justify-center ">
+                        <div className="relative">
+                            <input
+                                type="text"
+                                className="rounded-xl drop-shadow-xl text-slate-500 text-sm  px-8 h-7 sm:h-10 w-32 sm:w-72 border border-slate-4200 focus:outline-none focus:border-cyan-500"
+                                placeholder="Search"
+                            />
+                            <img
+                                loading="lazy"
+                                src={Lupa}
+                                className="absolute top-1/2 transform -translate-y-1/2 w-5 h-4 ml-2 cursor-pointer opacity-50"
+                                alt="Search"
+                                onClick={Search}
+                            />
+                        </div>
+                    </div>
 
                     <div className="flex justify-between mr-2 space-x-1 sm:space-x-3 ">
                         <img
@@ -74,22 +91,7 @@ function Header() {
             </div>
 
 
-            <div className="relative flex justify-center mt-7">
-                <div className="relative">
-                    <input
-                        type="text"
-                        className="rounded-xl drop-shadow-xl text-slate-500 text-sm  px-8 h-7 sm:h-10 w-32 sm:w-72 border border-slate-4200 focus:outline-none focus:border-cyan-500"
-                        placeholder="Search"
-                    />
-                    <img
-                        loading="lazy"
-                        src={Lupa}
-                        className="absolute top-1/2 transform -translate-y-1/2 w-5 h-4 ml-2 cursor-pointer opacity-50"
-                        alt="Search"
-                        onClick={Search}
-                    />
-                </div>
-            </div>
+            
 
     </div>
     );
