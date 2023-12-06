@@ -51,12 +51,12 @@
  *               items: 
  *                  type: object
  *                  description: Relação de cor e quantidade
- *                  example: [{"azul claro": 2},{"preto": 1}]
+ *                  example: {"azul claro": 2},{"preto": 1}
  *             tags:
  *               type: array
  *               items:
  *                  type: string
- *                  example: [corrida]
+ *                  example: corrida
  *             imagem:
  *                type: file
  *
@@ -247,7 +247,7 @@
  *               type: array
  *               items:
  *                  type: string
- *                  example: [corrida]
+ *                  example: corrida
  *             
  *     responses:
  *       200:
