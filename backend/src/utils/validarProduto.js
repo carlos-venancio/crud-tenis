@@ -3,6 +3,7 @@ import tagRepositories from "../repositories/tag.repositories.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import validator from 'validator'
 
 export async function validarMarca(marcanome) {
   if (!marcanome) return "Insira uma marca";
@@ -40,12 +41,16 @@ export async function validarTags(tags) {
 export async function validarProduto(body) {
  
 
-  body.cores = typeof body.cores == 'string' ? JSON.parse(body.cores) : body.cores;
-  body.fk_tags = Array.isArray(body.tags) ? body.tags : JSON.parse(body.tags) ;
+  console.log(body)
+
   body.fk_marcanome = body.marcanome
+  body.fk_tags = testeJSON(body.tags)
+  body.cores = testeJSON(body.cores)
+
+  if(!body.fk_tags) return [false, "Informe as tags num formato válida"] 
+  if(!body.cores) return [false, "Informe as cores num formato válida"] 
 
   const { fk_marcanome, token, modelo, genero, preco, tamanho, cores, fk_tags } = body;
-
   if ( !fk_marcanome ||!token ||!modelo ||!genero ||!preco || !tamanho ||!cores || !fk_tags )  return [false,"Insira todos os dados!"];
   
   const marcavalidada = await validarMarca(body.fk_marcanome);
@@ -61,4 +66,13 @@ export async function validarProduto(body) {
   body.fk_userId = id[1];
   
   return [true,body];
+}
+
+const testeJSON = (valor) => {
+  console.log(valor)
+  if (validator.isJSON(valor)) {
+    return typeof valor === 'string' ? JSON.parse(valor) : valor
+  }
+
+  return false
 }

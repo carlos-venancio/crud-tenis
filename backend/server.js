@@ -7,6 +7,7 @@ import testeRouter from "./src/routes/teste.route.js";
 import tagRouter from "./src/routes/tag.route.js";
 import swaggerSpec from "./src/config/swaggerConfig.js";
 import swaggerUi from "swagger-ui-express";
+import path from "path";
 
 // conexão com mongo
 connect();
@@ -18,6 +19,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/src/uploads",express.static('src/uploads'))
 
 // rotas
 app.use("/", testeRouter);
@@ -25,6 +27,7 @@ app.use("/produto", produtoRouter);
 app.use("/marca", marcaRouter);
 app.use("/tag", tagRouter);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 
 // configuração da porta
 const port = process.env.PORT;
