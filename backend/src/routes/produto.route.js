@@ -6,7 +6,6 @@ import {
   validarIdProduto,
   validarInfoProduto,
 } from "../middlewares/produto.middleware.js";
-import path from "path";
 
 const routes = Router();
 
