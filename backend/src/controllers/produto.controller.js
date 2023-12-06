@@ -12,9 +12,6 @@ async function cadastrarProduto(req, res) {
 
     req.body.imagem = req.file.path;
 
-    // validar campos
-    // validar chaves estrangeiras
-
     await repositories.cadastrarProduto(req.body);
 
     res.status(201).send({

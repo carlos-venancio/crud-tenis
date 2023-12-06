@@ -24,7 +24,7 @@ app.use("/", testeRouter);
 app.use("/produto", produtoRouter);
 app.use("/marca", marcaRouter);
 app.use("/tag", tagRouter);
-app.use('/api-docs', swaggerUi.serve,swaggerUi.setup(swaggerSpec))
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // configuração da porta
 const port = process.env.PORT;
