@@ -1,8 +1,20 @@
 import repositories from "../repositories/produto.repositories.js";
-
+import uploader from "../config/multer.js";
+import multer from 'multer'
+const addImage = await uploader.imagemECampos.single("imagem")
 
 async function cadastrarProduto(req, res) {
+
+  await addImage(req, res, (err) => {
+    if (err instanceof multer.MulterError) {
+      return res.status(400).send({
+        messgae: err.message
+      });
+    }
+  })
+
   try {
+    console.log('teste')
     if (!req.file) {
       res.status(400).send({
         message: "Insira uma imagem!",

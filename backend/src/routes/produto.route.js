@@ -1,6 +1,7 @@
 import { Router } from "express";
 import controller from "../controllers/produto.controller.js";
 import uploader from "../config/multer.js";
+
 import { descriptografarTokenUsuario } from "../middlewares/global.middleware.js";
 import {
   validarIdProduto,
@@ -12,9 +13,9 @@ const routes = Router();
 // rota para cadastrar um novo produto
 routes.post(
   "/",
-  uploader.imagemECampos.single("imagem"),
   controller.cadastrarProduto
-);
+)
+
 
 // rota para consultar todos os produtos de um usuario
 routes.get(

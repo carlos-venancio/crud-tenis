@@ -21,13 +21,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/src/uploads",express.static('src/uploads'))
 
+
 // rotas
 app.use("/", testeRouter);
 app.use("/produto", produtoRouter);
 app.use("/marca", marcaRouter);
 app.use("/tag", tagRouter);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
+app.use((req,res,next) => console.log("teste 2"))
 
 // configuração da porta
 const port = process.env.PORT;
