@@ -1,16 +1,24 @@
 import produto from "../models/Produto.js";
 
-export const pesquisarNoBanco = async (termoPesquisa) => {
-  try {
-    const resultados = await produto.find({
-        $or: [
-            {modelo: { $regex: new RegExp(`^${termoPesquisa}`, "i") }},
-            {fk_marcanome: { $regex: new RegExp(`^${termoPesquisa}`, "i") } }
-        ]
+const { q } = req.query;
+
+ if (!q) {
+    return res.status(400).json({ error: 'a busca não pode estar vazia.' });
+ }
+
+ try {
+    const products = await produto.find({
+      $or: [
+        { modelo: { $regex: q, $options: 'i' } },
+        { fk_marcanome: { $regex: q, $options: 'i' } },
+      ],
     });
 
-    return resultados;
-  } catch (error) {
-    throw new Error("erro ao realizar a pesquisa");
-  }
-};
+    if (!products.length) {
+      return res.status(404).json({ error: 'nenhum produto encontrado.' });
+    }
+
+    return res.json(products);
+ } catch (error) {
+    return res.status(500).json({ error: 'erro ao pesquisar produtos.' });
+ };
