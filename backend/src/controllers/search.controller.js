@@ -8,7 +8,6 @@ export const realizarPesquisa = async (req, res) => {
 
     res.status(200).json({
       message: "item encontrado com sucesso",
-      data: resultadosPesquisa,
     });
   } catch (error) {
     res.status(500).json({
