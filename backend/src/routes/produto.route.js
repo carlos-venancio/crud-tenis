@@ -61,9 +61,7 @@ routes.patch(
 
 // rota para consultar um produto especifico
 routes.get(
-  "/:id/:token",
-  descriptografarTokenUsuario,
-  validarIdProduto,
+  "/:id",
   controller.consultarProdutoPorId
 );
 

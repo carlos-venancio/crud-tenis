@@ -21,7 +21,7 @@ const Pagamento = mongoose.Schema({
   formaPagamento: {
     nome: {
       type: String,
-      enum: ['cartao de debito/credito'], // 'cash','venmo','paypal','amazon pay',
+      enum: ['debito','credito'], // 'cash','venmo','paypal','amazon pay',
       required: true
     },
     id: {

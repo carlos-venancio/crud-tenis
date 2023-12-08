@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import { validarIdUsuario } from "../utils/validarProduto.js";
 
 export async function descriptografarTokenUsuario(req, res, next) {
