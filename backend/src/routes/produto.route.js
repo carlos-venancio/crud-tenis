@@ -13,6 +13,7 @@ const routes = Router();
 // rota para cadastrar um novo produto
 routes.post(
   "/",
+  uploader.imagemECampos.single('imagem'),
   controller.cadastrarProduto
 )
 
