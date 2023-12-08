@@ -22,8 +22,7 @@ const fileFilter = async (req, file, cb) => {
 
     cb(null, true);
   } catch (e) {
-    console.log(e)
-    cb("Error: " + e.message, false);
+    cb(e);
   }
 };
 

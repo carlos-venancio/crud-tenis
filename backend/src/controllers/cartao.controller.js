@@ -1,7 +1,15 @@
 import cartaoRepositories from "../repositories/cartao.repositories.js";
+import uploader from '../config/multer.js'
+
+const addImage = uploader.imagemECampos.single('imagem')
 
 async function cadastrarCartao(req,res){
-    try {
+
+  try {
+      addImage((req,res) => {
+        
+        
+      })
 
       res.status(400)
     }
