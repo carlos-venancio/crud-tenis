@@ -5,9 +5,9 @@ import produtoRouter from "./src/routes/produto.route.js";
 import marcaRouter from "./src/routes/marca.route.js";
 import testeRouter from "./src/routes/teste.route.js";
 import tagRouter from "./src/routes/tag.route.js";
+import searchRouter from "./src/routes/search.route.js";
 import swaggerSpec from "./src/config/swaggerConfig.js";
 import swaggerUi from "swagger-ui-express";
-import path from "path";
 
 // conexão com mongo
 connect();
@@ -19,18 +19,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/src/uploads",express.static('src/uploads'))
-
 
 // rotas
 app.use("/", testeRouter);
 app.use("/produto", produtoRouter);
 app.use("/marca", marcaRouter);
 app.use("/tag", tagRouter);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-app.use((req,res,next) => console.log("teste 2"))
+app.use("/search", searchRouter);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // configuração da porta
-const port = process.env.PORT;
+const port = process.env.PORT
 
 app.listen(port, () => console.log(`Servidor on na porta ${port}`));
