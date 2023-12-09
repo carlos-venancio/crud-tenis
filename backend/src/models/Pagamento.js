@@ -4,7 +4,8 @@ import Produto from './Produto.js';
 
 const Pagamento = mongoose.Schema({
   fk_produtos: [{
-    type: Produto,
+    // cria um produto baseado em produto
+    type: Produto.schema,
     required: true,
   }],
   nomeCompanhia: {
@@ -19,7 +20,7 @@ const Pagamento = mongoose.Schema({
     required: true
   },
   formaPagamento: {
-    nome: {
+    tipo: {
       type: String,
       enum: ['debito','credito'], // 'cash','venmo','paypal','amazon pay',
       required: true
@@ -66,7 +67,6 @@ const Pagamento = mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  addiotionalProperties: false
 })
 
 

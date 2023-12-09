@@ -2,7 +2,7 @@ import { Router } from "express";
 import controller from "../controllers/produto.controller.js";
 import uploader from "../config/multer.js";
 
-import { descriptografarTokenUsuario } from "../middlewares/global.middleware.js";
+import { descriptografarTokenUsuario, htmlToJson } from "../middlewares/global.middleware.js";
 import {
   validarIdProduto,
   validarInfoProduto,
@@ -13,8 +13,9 @@ const routes = Router();
 // rota para cadastrar um novo produto
 routes.post(
   "/",
-  uploader.imagemECampos.single('imagem'),
-  controller.cadastrarProduto
+  uploader.single('imagem'),
+  controller.cadastrarProduto,
+  htmlToJson
 )
 
 
@@ -55,7 +56,7 @@ routes.patch(
   "/imagem/:id/:token",
   descriptografarTokenUsuario,
   validarIdProduto,
-  uploader.imagem.single("imagem"),
+  uploader.single("imagem"),
   controller.alterarImagem
 );
 

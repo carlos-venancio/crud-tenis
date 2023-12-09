@@ -1,8 +1,6 @@
 import multer from "multer";
 import path from "path";
 
-import { validarProduto } from "../utils/validarProduto.js";
-
 const uploader = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "src/uploads/");
@@ -12,21 +10,6 @@ const uploader = multer.diskStorage({
   },
 });
 
-const fileFilter = async (req, file, cb) => {
-  try {
-    const data = await validarProduto(req.body);
 
-    if (!data[0]) throw new Error(data[1]);
+export default multer({ storage: uploader })
 
-    req.body = data[1];
-
-    cb(null, true);
-  } catch (e) {
-    cb(e);
-  }
-};
-
-export default {
-  imagemECampos: multer({ storage: uploader, fileFilter }),
-  imagem: multer({ storage: uploader }),
-};

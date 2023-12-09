@@ -16,3 +16,8 @@ export async function descriptografarTokenUsuario(req, res, next) {
     });
   }
 }
+
+export async function htmlToJson(req,res) {
+  console.log('teste')
+  console.log(res.locais)
+}

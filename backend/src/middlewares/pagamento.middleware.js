@@ -1,9 +1,22 @@
-import cartaoRepositories from '../repositories/cartao.repositories';
+import cartaoRepositories from '../repositories/cartao.repositories.js';
+import constructorResponse from '../utils/constructorResponse.js';
 
-async function criarCartao(req,res,next){
+export async function criarCartao(req,res,next){
 
-    cartaoRepositories.cadastrarCartao(req.body.cartao)
+    if (!req.body.nomeTitular  || !req.body.numeroCartao || !req.body.dataExpiracao || !req.body.cvc) {
+        const resposta = constructorResponse['4000'];
+        resposta(res,"Informe todos os campos!")
+    }
 
+    // validações do numero do cartão e cvc
+    // validar data de expedição
+    // delimitar nome do titular
+    const cartao = await cartaoRepositories.cadastrarCartao(req.body.cartao);
 
-    next()
+    req.body.formaPagamento = {
+        tipo: cartao.tipo,
+        id: cartao._id
+    }
+
+    next();
 }

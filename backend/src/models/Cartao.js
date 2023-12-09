@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { ObjectId } from 'mongodb';
 
 const Cartao = mongoose.Schema({
     nomeTitular: {
@@ -9,7 +10,7 @@ const Cartao = mongoose.Schema({
         type: Number,
         required: true
     },
-    dataExperiracao: {
+    dataExpiracao: {
       type: Date,
       required: true
     },
@@ -22,7 +23,11 @@ const Cartao = mongoose.Schema({
         type: ObjectId,
         required: true
     },
-    additionalProperties: false,
+    tipo: {
+        type: String,
+        required: true,
+        enum: ["debito","credito"]
+    },
 })
 
 export default mongoose.model('Cartao', Cartao) 
