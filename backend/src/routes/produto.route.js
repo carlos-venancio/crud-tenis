@@ -13,8 +13,8 @@ const routes = Router();
 // rota para cadastrar um novo produto
 routes.post(
   "/",
-  uploader.imagemECampos.single('imagem'),
-  controller.cadastrarProduto
+  uploader.single('imagem'),
+  controller.cadastrarProduto,
 )
 
 
@@ -55,7 +55,7 @@ routes.patch(
   "/imagem/:id/:token",
   descriptografarTokenUsuario,
   validarIdProduto,
-  uploader.imagem.single("imagem"),
+  uploader.single("imagem"),
   controller.alterarImagem
 );
 

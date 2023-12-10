@@ -5,6 +5,7 @@ import produtoRouter from "./src/routes/produto.route.js";
 import marcaRouter from "./src/routes/marca.route.js";
 import testeRouter from "./src/routes/teste.route.js";
 import tagRouter from "./src/routes/tag.route.js";
+import pagamentoRouter from "./src/routes/pagamento.route.js";
 import searchRouter from "./src/routes/search.route.js";
 import swaggerSpec from "./src/config/swaggerConfig.js";
 import swaggerUi from "swagger-ui-express";
@@ -26,9 +27,11 @@ app.use("/produto", produtoRouter);
 app.use("/marca", marcaRouter);
 app.use("/tag", tagRouter);
 app.use("/search", searchRouter);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/pagamento", pagamentoRouter);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 
 // configuração da porta
-const port = process.env.PORT
+const port = process.env.PORT;
 
 app.listen(port, () => console.log(`Servidor on na porta ${port}`));
