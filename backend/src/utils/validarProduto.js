@@ -42,13 +42,6 @@ export async function validarTags(tags) {
 }
 
 export async function validarProduto(body) {
-  body.fk_marcanome = body.marcanome;
-  body.fk_tags = testeJSON(body.tags);
-  body.cores = testeJSON(body.cores);
-
-  if (!body.fk_tags) return [false, "Informe as tags num formato válida"];
-  if (!body.cores) return [false, "Informe as cores num formato válida"];
-
   const {
     fk_marcanome,
     token,
@@ -70,6 +63,14 @@ export async function validarProduto(body) {
     !fk_tags
   )
     return [false, "Insira todos os dados!"];
+    
+  body.fk_marcanome = body.marcanome;
+  body.fk_tags = testeJSON(body.tags);
+  body.cores = testeJSON(body.cores);
+
+  if (!body.fk_tags) return [false, "Informe as tags num formato válida"];
+  if (!body.cores) return [false, "Informe as cores num formato válida"];
+
 
   const marcavalidada = await validarMarca(body.fk_marcanome);
   if (marcavalidada) return [false, marcavalidada];

@@ -7,7 +7,6 @@ export async function descriptografarTokenUsuario(req, res, next) {
     if (!tokenDesc[0]) throw new Error(tokenDesc[1]) 
 
     req.body.fk_userId = tokenDesc[1];
-    console.log(req.body)
 
     next();
   } catch (e) {

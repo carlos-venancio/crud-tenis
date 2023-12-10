@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import pagamentoModel from "../models/Pagamento.js";
 
 async function cadastrarPagamento(data) {
@@ -29,4 +30,15 @@ async function cadastrarPagamento(data) {
 export default {
     cadastrarPagamento,
 };
+=======
+import pagamentoModel from "../models/Pagamento.js";
+
+async function cadastrarPagamento(data) {
+    await new pagamentoModel(data).save()
+}
+
+export default {
+    cadastrarPagamento,
+};
+>>>>>>> 428a56f98a0cfeb5c500eb8a3aa60af2d069fee1
   

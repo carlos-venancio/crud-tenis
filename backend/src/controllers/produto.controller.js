@@ -1,33 +1,37 @@
 import repositories from "../repositories/produto.repositories.js";
-import uploader from '../config/multer.js';
-import multer from 'multer';
-
-const addImage = uploader.imagemECampos.single('imagem');
+import fs from "fs";
+import { validarProduto } from "../utils/validarProduto.js";
+import constructorResponse from "../utils/constructorResponse.js";
 
 async function cadastrarProduto(req, res) {
 
-    try {
-      
-    if (req.file.includes("Error")) {
-      console.log(typeof req.file)
-    }
-    if (!req.file) {
-      res.status(400).send({
+  try {
+    const data = await validarProduto(req.body);
+
+    if (!req.file)
+      return res.status(400).json({
         message: "Insira uma imagem!",
       });
-      return;
+
+    else if (!data[0]) {
+      // exclui o arquivos caso não seja válido
+      fs.unlinkSync(req.file.path);
+
+      // retorna uma resposta em json com o erro 
+      const response = constructorResponse["4000"];
+      return response(res, data[1]);
     }
 
     req.body.imagem = req.file.path;
 
-    await repositories.cadastrarProduto(req.body);
+    // Restante do seu código para cadastrar o produto
 
-    res.status(201).send({
+    res.status(201).json({
       message: "Produto cadastrado com sucesso!",
     });
   } catch (e) {
-    res.status(500).send({
-      message:  e.message,
+    res.status(500).json({
+      message: e.message,
     });
   }
 }
@@ -84,29 +88,23 @@ async function alterarVisibilidade(req, res) {
   }
 }
 
-async function alterarCampos(req,res) {
-  try{
-
-    const produto = await repositories.alterarCampos(req.params.id,req.body)
-    
+async function alterarCampos(req, res) {
+  try {
+    const produto = await repositories.alterarCampos(req.params.id, req.body);
 
     res.status(200).send({
       message: "Produto alterado com sucesso",
-      data: produto
+      data: produto,
     });
-
   } catch (e) {
     res.status(500).send({
-      message:  e.message,
+      message: e.message,
     });
   }
-
-
 }
 
-async function alterarImagem(req,res) {
+async function alterarImagem(req, res) {
   try {
-    
     if (!req.file) {
       res.status(400).send({
         message: "Insira uma imagem!",
@@ -114,26 +112,28 @@ async function alterarImagem(req,res) {
       return;
     }
 
-    const produto = await repositories.alterarImagem(req.params.id,req.file.path);
+    const produto = await repositories.alterarImagem(
+      req.params.id,
+      req.file.path
+    );
 
     res.status(200).send({
       message: "Imagem alterada com sucesso!",
-      data: produto
+      data: produto,
     });
   } catch (e) {
     res.status(500).send({
-      message:e.message,
+      message: e.message,
     });
   }
 }
 
-async function consultarProdutoPorId(req,res) {
+async function consultarProdutoPorId(req, res) {
   try {
-    
     const produto = await repositories.consultarProdutoPorId(req.params.id);
 
-     // valida se o produto existe
-     if (!produto) {
+    // valida se o produto existe
+    if (!produto) {
       res.status(404).send({
         message: "Produto não encontrado",
       });
@@ -142,18 +142,14 @@ async function consultarProdutoPorId(req,res) {
 
     res.status(200).json({
       message: "Produto encontrado!",
-      data: produto
-    })
-
+      data: produto,
+    });
   } catch (e) {
     res.status(500).send({
-      message:  e.message,
+      message: e.message,
     });
   }
 }
-
-
-
 
 export default {
   cadastrarProduto,
@@ -162,5 +158,5 @@ export default {
   alterarVisibilidade,
   alterarCampos,
   alterarImagem,
-  consultarProdutoPorId
+  consultarProdutoPorId,
 };
