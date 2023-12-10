@@ -38,7 +38,7 @@ async function deletarProduto(id) {
 
 // consulta um produto pelo id dele
 async function consultarProdutoPorId(id, userId) {
-  return await produtoModel.findOne({ _id: id, fk_userId: userId },'-active -__v -fk_userId');
+  return await produtoModel.findOne({ _id: id },'-active -__v -fk_userId');
 }
 
 // esconde um produto, mas mantei ele ainda cadastrado

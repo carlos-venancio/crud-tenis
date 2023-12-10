@@ -4,4 +4,6 @@ async function cadastrarCartao(data){
     await new cartaoModel(data).save()
 }
 
-export default cadastrarCartao;
+export default {
+    cadastrarCartao
+};

@@ -1,20 +1,16 @@
 import repositories from "../repositories/produto.repositories.js";
-import uploader from "../config/multer.js";
-import multer from 'multer'
-const addImage = uploader.imagemECampos.single("imagem")
+import uploader from '../config/multer.js';
+import multer from 'multer';
+
+const addImage = uploader.imagemECampos.single('imagem');
 
 async function cadastrarProduto(req, res) {
 
-   addImage(req, res, (err) => {
-    if (err instanceof multer.MulterError) {
-      return res.status(400).send({
-        messgae: err.message
-      });
+    try {
+      
+    if (req.file.includes("Error")) {
+      console.log(typeof req.file)
     }
-  })
-
-  try {
-    console.log('teste')
     if (!req.file) {
       res.status(400).send({
         message: "Insira uma imagem!",
@@ -134,7 +130,15 @@ async function alterarImagem(req,res) {
 async function consultarProdutoPorId(req,res) {
   try {
     
-    const produto = await repositories.consultarProdutoPorId(req.params.id, req.body.fk_userId);
+    const produto = await repositories.consultarProdutoPorId(req.params.id);
+
+     // valida se o produto existe
+     if (!produto) {
+      res.status(404).send({
+        message: "Produto não encontrado",
+      });
+      return;
+    }
 
     res.status(200).json({
       message: "Produto encontrado!",

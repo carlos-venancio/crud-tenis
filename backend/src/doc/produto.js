@@ -458,7 +458,7 @@
 // rota para consultar um produto especifico
 /**
  * @swagger
- * /produto/{id}/{token}:
+ * /produto/{id}/:
  *   get:
  *     tags:
  *       - Produto
@@ -471,10 +471,6 @@
  *       - in: path
  *         name: id
  *         description: id do produto
- *         required: true
- *       - in: path
- *         name: token
- *         description: Token do usuario
  *         required: true
  *     responses:
  *       200:

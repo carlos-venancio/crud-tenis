@@ -1,5 +1,3 @@
-// - marca
-//          -pk_marcanome
 import mongoose from "mongoose";
 
 const Marca = new mongoose.Schema({
