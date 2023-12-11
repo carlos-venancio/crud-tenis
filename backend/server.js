@@ -29,6 +29,8 @@ app.use("/tag", tagRouter);
 app.use("/search", searchRouter);
 app.use("/pagamento", pagamentoRouter);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/src/uploads", express.static('./src/uploads'))
+
 
 
 // configuração da porta
