@@ -1,4 +1,5 @@
 import produtoModel from "../models/Produto.js";
+import fs from 'fs'
 
 // cadastra um novo produto
 async function cadastrarProduto(body) {
@@ -91,6 +92,9 @@ async function alterarImagem(id, url) {
     cores,
     fk_tags,
   } = await produtoModel.findByIdAndUpdate(id, { imagem: url }, { new: true });
+
+  // remove a antiga imagem
+  fs.unlinkSync(url);
 
   return {
     fk_marcanome,

@@ -6,6 +6,7 @@ import constructorResponse from "../utils/constructorResponse.js";
 async function cadastrarProduto(req, res) {
 
   try {
+    console.log(req.file)
     const data = await validarProduto(req.body);
 
     if (!req.file)
