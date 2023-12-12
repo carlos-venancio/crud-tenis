@@ -1,21 +1,23 @@
-import pesquisarNoBanco from '../repositories/search.repository.js';
+import produto from "../models/Produto.js";
 
-export const realizarPesquisa = async (req, res) => {
+const pesquisarNoBanco = async (termoPesquisa) => {
   try {
-    const termoPesquisa = req.query.q;
-
-    const resultados = await pesquisarNoBanco(termoPesquisa);
-
-    res.status(200).json({
-      message: "Itens encontrados com sucesso",
-      resultados,
+    const resultados = await produto.find({
+        $or: [
+            {modelo: { $regex: new RegExp(termoPesquisa, "i") }},
+            {fk_marcanome: { $regex: new RegExp(termoPesquisa, "i") } }
+        ]
     });
+
+    console.log('Resultados da Pesquisa:', resultados);
+
+    return resultados;
   } catch (error) {
-    res.status(500).json({
-      message: "Erro ao realizar a pesquisa",
-      error: error.message,
-    });
+    console.error('Erro ao realizar a pesquisa:', error.message);
+    throw new Error("erro ao realizar a pesquisa");
   }
 };
 
-export default realizarPesquisa;
+
+
+export default pesquisarNoBanco;
