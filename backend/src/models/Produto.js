@@ -45,6 +45,7 @@ const produto = new mongoose.Schema({
   cores: [{
       type: Map,
       of: Number,
+      required: true
     }],
   fk_tags: [
     {

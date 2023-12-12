@@ -18,17 +18,17 @@ async function cadastrarProduto(req, res) {
       fs.unlinkSync(req.file.path);
 
       // retorna uma resposta em json com o erro 
-      const response = constructorResponse["4000"];
-      return response(res, data[1]);
+      return constructorResponse[400](res,data[1])
     }
 
     req.body.imagem = req.file.path;
 
-    // Restante do seu código para cadastrar o produto
+    // cadastra um produto
+    const { modelo,  fk_tags, cores, tamanho, preco } = await repositories.cadastrarProduto(req.body)
 
-    res.status(201).json({
-      message: "Produto cadastrado com sucesso!",
-    });
+    // Restante do seu código para cadastrar o produto
+    return constructorResponse[201](res,"Produto cadastrado com sucesso!", { modelo,  fk_tags, cores, tamanho, preco })
+
   } catch (e) {
     res.status(500).json({
       message: e.message,

@@ -1,9 +1,9 @@
 import pagamentoRepositories from "../repositories/pagamento.repositories.js";
 import constructorResponse from "../utils/constructorResponse.js";
 
-export async function cadastrarPagamento(req,res){
+async function cadastrarPagamento(req,res){
   
-  let statusCode = 2000;
+  let statusCode = 200;
   try {
     
     await pagamentoRepositories.cadastrarPagamento(req.body);
@@ -17,4 +17,8 @@ export async function cadastrarPagamento(req,res){
         const response = constructorResponse[statusCode]
         response(res,e.message)
     }
+}
+
+export default {
+  cadastrarPagamento
 }

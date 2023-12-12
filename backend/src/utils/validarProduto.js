@@ -43,29 +43,29 @@ export async function validarTags(tags) {
 
 export async function validarProduto(body) {
   const {
-    fk_marcanome,
+    marcanome,
     token,
     modelo,
     genero,
     preco,
     tamanho,
     cores,
-    fk_tags,
+    tags,
   } = body;
   if (
-    !fk_marcanome ||
+    !marcanome ||
     !token ||
     !modelo ||
     !genero ||
     !preco ||
     !tamanho ||
     !cores ||
-    !fk_tags
+    !tags
   )
     return [false, "Insira todos os dados!"];
     
   body.fk_marcanome = body.marcanome;
-  body.fk_tags = testeJSON(body.tags);
+  body.fk_tags = testeJSON(formatArray(body.tags));
   body.cores = testeJSON(body.cores);
 
   if (!body.fk_tags) return [false, "Informe as tags num formato válida"];
@@ -87,9 +87,12 @@ export async function validarProduto(body) {
 }
 
 const testeJSON = (valor) => {
+
   if (validator.isJSON(valor)) {
     return typeof valor === "string" ? JSON.parse(valor) : valor;
   }
 
   return false;
 };
+
+const formatArray = (texto) => texto.includes('[') & texto.includes(']') ? texto : texto.split(',')

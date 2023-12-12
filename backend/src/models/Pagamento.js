@@ -8,6 +8,10 @@ const Pagamento = mongoose.Schema({
     type: Produto.schema,
     required: true,
   }],
+  fk_userId: {
+    type: ObjectId,
+    reuired: true
+  },
   nomeCompanhia: {
     type: String,
   },

@@ -27,7 +27,7 @@ async function consultarTodosPorUsuario(id) {
       fk_userId: id,
       active: true,
     },
-    "-active -__v -fk_userId", { limit: 10 }
+    "-active -__v", { limit: 10 }
   );
 }
 
@@ -37,7 +37,7 @@ async function deletarProduto(id) {
 }
 
 // consulta um produto pelo id dele
-async function consultarProdutoPorId(id, userId) {
+async function consultarProdutoPorId(id) {
   return await produtoModel.findOne({ _id: id },'-active -__v -fk_userId');
 }
 

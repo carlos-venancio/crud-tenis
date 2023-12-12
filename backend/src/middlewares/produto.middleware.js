@@ -15,8 +15,7 @@ export async function validarIdProduto(req, res, next) {
     }
 
     const produto = await produtoRepositories.consultarProdutoPorId(
-      id,
-      req.body.fk_userId
+      id
     );
 
     // valida se o produto existe

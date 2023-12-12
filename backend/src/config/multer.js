@@ -13,18 +13,3 @@ const uploader = multer.diskStorage({
 
 export default multer({ storage: uploader })
 
-<<<<<<< HEAD
-    req.body = data[1];
-
-    cb(null, true);
-  } catch (e) {
-    cb(e);
-  }
-};
-
-export default {
-  imagemECampos: multer({ storage: uploader, fileFilter }),
-  imagem: multer({ storage: uploader }),
-};
-=======
->>>>>>> 428a56f98a0cfeb5c500eb8a3aa60af2d069fee1
