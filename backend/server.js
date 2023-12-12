@@ -6,7 +6,6 @@ import marcaRouter from "./src/routes/marca.route.js";
 import testeRouter from "./src/routes/teste.route.js";
 import tagRouter from "./src/routes/tag.route.js";
 import pagamentoRouter from "./src/routes/pagamento.route.js";
-import pagamentoRouter from "./src/routes/pagamento.route.js";
 import searchRouter from "./src/routes/search.route.js";
 import swaggerSpec from "./src/config/swaggerConfig.js";
 import swaggerUi from "swagger-ui-express";
