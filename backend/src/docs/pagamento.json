@@ -1,0 +1,196 @@
+{
+    "/pagamento": {
+      "post": {
+        "tags": ["Pagamento"],
+        "summary": "Cadastra um produto",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "produto",
+            "description": "Informações do produto",
+            "schema": {
+              "type": "object",
+              "required": [
+                "token",
+                "fk_produtos",
+                "fk_marcanome",
+                "nome",
+                "celular",
+                "cartao",
+                "total",
+                "localizacao"
+              ],
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "example": "654b975e7479aaef625151ca"
+                },
+                "fk_produtos": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string"
+                    },
+                    "fk_marcanome": {
+                      "type": "string"
+                    },
+                    "imagem": {
+                      "type": "string"
+                    },
+                    "modelo": {
+                      "type": "string"
+                    },
+                    "genero": {
+                      "type": "string"
+                    },
+                    "preco": {
+                      "type": "number"
+                    },
+                    "tamanho": {
+                      "type": "integer"
+                    },
+                    "fk_tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "cores": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "id": "656bafa4767b47f73b87e18c",
+                      "fk_marcanome": "nike",
+                      "imagem": "src\\uploads\\1701556132964.jpg",
+                      "modelo": "tênis nike air  soft",
+                      "genero": "feminino",
+                      "preco": 379.9,
+                      "tamanho": 32,
+                      "fk_tags": ["corrida", "com cadarço"],
+                      "cores": ["branco", "preto"]
+                    },
+                    {
+                      "id": "656bafa4767b47f73b87e18c",
+                      "fk_marcanome": "nike",
+                      "imagem": "src\\uploads\\1701556132964.jpg",
+                      "modelo": "tênis nike air  soft",
+                      "genero": "feminino",
+                      "preco": 379.9,
+                      "tamanho": 32,
+                      "fk_tags": ["corrida", "com cadarço"],
+                      "cores": ["branco", "preto"]
+                    }
+                  ]
+                },
+                "nome": {
+                  "type": "string",
+                  "example": "fulano"
+                },
+                "celular": {
+                  "type": "number",
+                  "example": 1199999999
+                },
+                "cartao": {
+                  "type": "object",
+                  "properties": {
+                    "nomeTitular": {
+                      "type": "string"
+                    },
+                    "tipo": {
+                      "type": "string"
+                    },
+                    "dataExpiracao": {
+                      "type": "date"
+                    },
+                    "numeroCartao": {
+                      "type": "number"
+                    },
+                    "cvc": {
+                      "type": "string"
+                    }
+                  },
+                  "example": [
+                    {
+                      "nomeTitular": "fulano da silva",
+                      "tipo": "credito",
+                      "dataExpiracao": "2023/10/21",
+                      "numeroCartao": 1234567890123456,
+                      "cvc": "123"
+                    }
+                  ]
+                },
+                "total": {
+                  "type": "number",
+                  "example": 200
+                },
+                "localizacao": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "example": ["azul claro", "preto"]
+                  }
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "example": "corrida"
+                  }
+                },
+                "imagem": {
+                  "type": "file"
+                },
+                "qtd": {
+                  "type": "number",
+                  "example": 2
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso consultar todas as marcas",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 200
+                    },
+                    "results": {
+                      "type": "number",
+                      "example": 10
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "adidas"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Credenciais inválidas"
+          },
+          "500": {
+            "description": "Requisição mal formatada"
+          }
+        }
+      }
+    }
+  }
+  

@@ -1,23 +1,20 @@
-import swaggerJSDoc from 'swagger-jsdoc'
+import produto from '../docs/produto.json' assert { type:'json' }
 
-const swaggerDefinition = {
-  openapi: '3.0.0',
+const swaggerDocs = {
+  openapi: "3.0.0",
   info: {
-    title: 'API Login',
-    version: '1.0.0',
-    description: 'Documentação da api MARCHA'
+    title: "API Login",
+    version: "1.0.0",
+    description: "Documentação da API MARCHA"
   },
   servers: [
     {
-      url: 'https://marcha-api.onrender.com',
-    },
+      url: "https://marcha-api.onrender.com"
+    }
   ],
-};
+  paths: {
+    "/produto": produto
+  }
+}
 
-const options = {
-  swaggerDefinition,
-  apis: ['src/docs/*.js'], // caminho dos arquivos que contêm a documentação da API
-};
-
-const swaggerSpec = swaggerJSDoc(options);
-export default swaggerSpec;
+export default swaggerDocs

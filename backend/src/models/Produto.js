@@ -30,7 +30,7 @@ const produto = new mongoose.Schema({
     required: true,
   },
   genero: {
-    type: [String, 'Insira um genero valido: masculino, feminino, unissex'],
+    type: String,
     enum: ["masculino", "feminino", "unissex"],
     required: true,
   },
@@ -55,7 +55,7 @@ const produto = new mongoose.Schema({
   active: {
     type: Boolean,
     default: true
-  }
+  },
 });
 
 export default mongoose.model("Produto", produto);

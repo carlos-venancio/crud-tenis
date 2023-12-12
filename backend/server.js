@@ -7,8 +7,10 @@ import testeRouter from "./src/routes/teste.route.js";
 import tagRouter from "./src/routes/tag.route.js";
 import pagamentoRouter from "./src/routes/pagamento.route.js";
 import searchRouter from "./src/routes/search.route.js";
-import swaggerSpec from "./src/config/swaggerConfig.js";
 import swaggerUi from "swagger-ui-express";
+
+
+import swaggerFile from './src/config/swaggerConfig.js'  // importa o arquivo json de documentação
 
 // conexão com mongo
 connect();
@@ -29,7 +31,7 @@ app.use("/tag", tagRouter);
 app.use("/search", searchRouter);
 app.use("/pagamento", pagamentoRouter);
 app.use("/src/uploads", express.static('./src/uploads'))
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use("/src/uploads", express.static('./src/uploads'))
 
 
