@@ -4,32 +4,40 @@ import { validarProduto } from "../utils/validarProduto.js";
 import constructorResponse from "../utils/constructorResponse.js";
 
 async function cadastrarProduto(req, res) {
-
   try {
-    const data = await validarProduto(req.body);
+    console.log(req.file)
 
     if (!req.file)
       return res.status(400).json({
         message: "Insira uma imagem!",
       });
 
-    else if (!data[0]) {
+    const data = await validarProduto(req.body);
+    if (!data[0]) {
       // exclui o arquivos caso não seja válido
       fs.unlinkSync(req.file.path);
 
-      // retorna uma resposta em json com o erro 
-      return constructorResponse[400](res,data[1])
+      // retorna uma resposta em json com o erro
+      return constructorResponse[400](res, data[1]);
     }
 
-    req.body.imagem = req.file.path;
+
+    req.body.imagem = req.file.filename;
 
     // cadastra um produto
-    const { modelo,  fk_tags, cores, tamanho, preco } = await repositories.cadastrarProduto(req.body)
+    const { modelo, fk_tags, cores, tamanho, preco } =
+      await repositories.cadastrarProduto(req.body);
 
     // Restante do seu código para cadastrar o produto
-    return constructorResponse[201](res,"Produto cadastrado com sucesso!", { modelo,  fk_tags, cores, tamanho, preco })
-
+    return constructorResponse[201](res, "Produto cadastrado com sucesso!", {
+      modelo,
+      fk_tags,
+      cores,
+      tamanho,
+      preco,
+    });
   } catch (e) {
+    console.log(e);
     res.status(500).json({
       message: e.message,
     });
@@ -56,7 +64,7 @@ async function consultarTodosPorUsuario(req, res) {
 async function deletarProduto(req, res) {
   try {
     const id = req.params.id;
-    await repositories.deletarProduto(id);
+    await repositories.deletarProduto(id, req.body.fk_userId);
 
     res.status(200).send({
       message: "Produto deletado com sucesso",

@@ -1,17 +1,5 @@
 import mongoose from "mongoose";
 
-// - produto
-// fk_userId
-// fk_marcanome
-// imagem
-// modelo
-// genero
-// preco
-// cores
-// qtd
-// tamanho
-// fk_tags
-
 const produto = new mongoose.Schema({
   fk_userId: {
     type: String,
@@ -30,7 +18,7 @@ const produto = new mongoose.Schema({
     required: true,
   },
   genero: {
-    type: [String, 'Insira um genero valido: masculino, feminino, unissex'],
+    type: String,    
     enum: ["masculino", "feminino", "unissex"],
     required: true,
   },

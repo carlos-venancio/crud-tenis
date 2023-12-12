@@ -16,6 +16,7 @@ async function cadastrarProduto(body) {
     imagem: body.imagem,
   };
 
+  console.log(produto)
   const newProduto = new produtoModel(produto);
 
   return await newProduto.save();
@@ -33,8 +34,11 @@ async function consultarTodosPorUsuario(id) {
 }
 
 // deleta um produto
-async function deletarProduto(id) {
-  return await produtoModel.findByIdAndDelete(id);
+async function deletarProduto(id, userId) {
+  return await produtoModel.findOneAndDelete({
+    fk_userId: userId,
+    _id: id
+  });
 }
 
 // consulta um produto pelo id dele
