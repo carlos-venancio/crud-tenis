@@ -89,7 +89,7 @@ export async function validarProduto(body) {
 const testeJSON = (valor) => {
 
   if (validator.isJSON(valor)) {
-    return typeof valor === "string" ? JSON.parse(valor) : valor;
+    return typeof valor == "string" ? JSON.parse(valor) : valor;
   }
 
   return false;
