@@ -32,7 +32,7 @@ app.use("/pagamento", pagamentoRouter);
 app.use("//src//uploads", express.static('./src/uploads'))
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(express.static('./src/uploads'))
-app.use("/admin", AdminRouter)
+
 
 
 // configuração da porta
