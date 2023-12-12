@@ -43,16 +43,15 @@ const produto = new mongoose.Schema({
     required: true,
   },
   cores: [{
-      type: Map,
-      of: Number,
-    }],
-  fk_tags: [
-    {
       type: String,
       required: true,
       trim: true,
-    },
-  ],
+    }],
+  fk_tags: [{
+      type: String,
+      required: true,
+      trim: true,
+    }],
   active: {
     type: Boolean,
     default: true
