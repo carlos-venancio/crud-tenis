@@ -5,6 +5,7 @@ import produtoRouter from "./src/routes/produto.route.js";
 import marcaRouter from "./src/routes/marca.route.js";
 import testeRouter from "./src/routes/teste.route.js";
 import tagRouter from "./src/routes/tag.route.js";
+import AdminRouter from "./src/routes/admnin.controller.js"
 import pagamentoRouter from "./src/routes/pagamento.route.js";
 import searchRouter from "./src/routes/search.route.js";
 import swaggerUi from "swagger-ui-express";
@@ -30,9 +31,9 @@ app.use("/marca", marcaRouter);
 app.use("/tag", tagRouter);
 app.use("/search", searchRouter);
 app.use("/pagamento", pagamentoRouter);
-app.use("/src/uploads", express.static('./src/uploads'))
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
-app.use("/src/uploads", express.static('./src/uploads'))
+app.use("//src//uploads", express.static('./src/uploads'))
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(express.static('./src/uploads'))
 
 
 
