@@ -10,6 +10,12 @@ import {
 
 const routes = Router();
 
+//rota para pegar todos os produtos
+routes.get(
+  "/all",
+  controller.pegarTodos
+)
+
 // rota para cadastrar um novo produto
 routes.post(
   "/",
