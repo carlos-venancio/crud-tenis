@@ -113,6 +113,10 @@ async function alterarImagem(id, url) {
   };
 }
 
+async function pegarTodos() {
+  return await produtoModel.find({}, "-active -__v -_id").limit(10);
+}
+
 export default {
   cadastrarProduto,
   consultarTodosPorUsuario,
