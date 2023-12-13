@@ -159,6 +159,21 @@ async function consultarProdutoPorId(req, res) {
   }
 }
 
+async function pegarTodos(req, res) {
+  try {
+    const produtos = await repositories.pegarTodos();
+    res.status(200).json({
+      message: "todos os produtos consultados com sucesso",
+      data: produtos,
+    });
+  } catch (e) {
+    res.status(500).json({
+      message: e.message,
+    });
+  }
+}
+
+
 export default {
   cadastrarProduto,
   consultarTodosPorUsuario,
@@ -167,4 +182,5 @@ export default {
   alterarCampos,
   alterarImagem,
   consultarProdutoPorId,
+  pegarTodos
 };
