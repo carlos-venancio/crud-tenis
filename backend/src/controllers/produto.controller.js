@@ -125,7 +125,7 @@ async function alterarImagem(req, res) {
 
     const produto = await repositories.alterarImagem(
       req.params.id,
-      req.file.path
+      req.file.filename
     );
 
     res.status(200).send({

@@ -1,9 +1,8 @@
 import produtoModel from "../models/Produto.js";
-import fs from 'fs'
+import fs from "fs";
 
 // cadastra um novo produto
 async function cadastrarProduto(body) {
-
   const produto = {
     fk_marcanome: body.fk_marcanome,
     fk_userId: body.fk_userId,
@@ -16,7 +15,7 @@ async function cadastrarProduto(body) {
     imagem: body.imagem,
   };
 
-  console.log(produto)
+  console.log(produto);
   const newProduto = new produtoModel(produto);
 
   return await newProduto.save();
@@ -29,7 +28,8 @@ async function consultarTodosPorUsuario(id) {
       fk_userId: id,
       active: true,
     },
-    "-active -__v", { limit: 10 }
+    "-active -__v",
+    { limit: 10 }
   );
 }
 
@@ -37,13 +37,13 @@ async function consultarTodosPorUsuario(id) {
 async function deletarProduto(id, userId) {
   return await produtoModel.findOneAndDelete({
     fk_userId: userId,
-    _id: id
+    _id: id,
   });
 }
 
 // consulta um produto pelo id dele
 async function consultarProdutoPorId(id) {
-  return await produtoModel.findOne({ _id: id },'-active -__v -fk_userId');
+  return await produtoModel.findOne({ _id: id }, "-active -__v -fk_userId");
 }
 
 // esconde um produto, mas mantei ele ainda cadastrado
@@ -57,7 +57,6 @@ async function alterarVisibilidade(id) {
 
 // altera os campos de um produto
 async function alterarCampos(id, body) {
-  
   const {
     fk_marcanome,
     imagem,
@@ -85,32 +84,14 @@ async function alterarCampos(id, body) {
 
 // altera a imagem de um produto
 async function alterarImagem(id, url) {
-  const {
-    fk_marcanome,
-    imagem,
-    modelo,
-    genero,
-    _id,
-    preco,
-    tamanho,
-    cores,
-    fk_tags,
-  } = await produtoModel.findByIdAndUpdate(id, { imagem: url }, { new: true });
-
+  
+  const produto = await produtoModel.findById(id)
   // remove a antiga imagem
-  fs.unlinkSync(url);
+  fs.unlinkSync(`./src/uploads/${produto.imagem}`);
 
-  return {
-    fk_marcanome,
-    imagem,
-    modelo,
-    genero,
-    _id,
-    preco,
-    tamanho,
-    cores,
-    fk_tags,
-  };
+  produto.imagem = url;
+
+  return (await produto.save()).imagem
 }
 
 async function pegarTodos() {
@@ -125,5 +106,5 @@ export default {
   alterarVisibilidade,
   alterarCampos,
   alterarImagem,
-  pegarTodos
+  pegarTodos,
 };
