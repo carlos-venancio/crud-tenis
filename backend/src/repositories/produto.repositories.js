@@ -125,4 +125,5 @@ export default {
   alterarVisibilidade,
   alterarCampos,
   alterarImagem,
+  pegarTodos
 };
