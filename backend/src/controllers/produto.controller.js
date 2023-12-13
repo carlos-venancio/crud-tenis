@@ -5,7 +5,7 @@ import constructorResponse from "../utils/constructorResponse.js";
 
 async function cadastrarProduto(req, res) {
   try {
-    console.log(req.file)
+
 
     if (!req.file)
       return res.status(400).json({
@@ -38,9 +38,12 @@ async function cadastrarProduto(req, res) {
     });
   } catch (e) {
     console.log(e);
+    fs.unlinkSync(req.file.path);
+    
     res.status(500).json({
       message: e.message,
     });
+
   }
 }
 

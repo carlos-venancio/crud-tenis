@@ -31,9 +31,9 @@ export function validarIdUsuario(token) {
   }
 }
 
+
 export async function validarTags(tags) {
   const tagsExistentes = (await tagRepositories.pegarTodos()).map(objectTag => objectTag.pk_tagnome).join();
-
   const tagsValidas = tags.every((tag) => tagsExistentes.includes(tag))
 
   if (!tagsValidas) return "Coloque apenas tags válidas";
@@ -74,4 +74,17 @@ export async function validarProduto(body) {
   return [true, body];
 }
 
-const formatArray = (texto) => (texto[0] === "[") & (texto[texto.length] == "]") ? texto : texto.split(",").map(tag => tag.trim());
+const formatArray = (texto) => {
+
+  switch(typeof texto){
+    case 'string': 
+      texto =  texto.replaceAll("[","")
+      texto =  texto.replaceAll("]","")
+      texto =  texto.replaceAll('"',"")
+      texto =  texto.replaceAll("'","")
+
+      return texto.split(",").map(tag => tag.trim())
+
+    case 'object': return texto;
+  }
+}
