@@ -35,10 +35,15 @@ async function consultarTodosPorUsuario(id) {
 
 // deleta um produto
 async function deletarProduto(id, userId) {
-  return await produtoModel.findOneAndDelete({
+  const produto = await produtoModel.findOneAndDelete({
     fk_userId: userId,
     _id: id
   });
+
+   // remove a antiga imagem
+   fs.unlinkSync(`./src/uploads/${produto.imagem}`);
+
+  return produto
 }
 
 // consulta um produto pelo id dele
@@ -98,7 +103,7 @@ async function alterarImagem(id, url) {
   } = await produtoModel.findByIdAndUpdate(id, { imagem: url }, { new: true });
 
   // remove a antiga imagem
-  fs.unlinkSync(url);
+  fs.unlinkSync(`./src/uploads/${url}`);
 
   return {
     fk_marcanome,
