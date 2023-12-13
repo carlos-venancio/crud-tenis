@@ -49,9 +49,9 @@
  *             cores:
  *               type: array
  *               items: 
- *                  type: object
+ *                  type: string
  *                  description: Relação de cor e quantidade
- *                  example: [{"azul claro": 2},{"preto": 1}]
+ *                  example: ["azul claro", "preto"]
  *             tags:
  *               type: array
  *               items:
@@ -240,9 +240,9 @@
  *             cores:
  *               type: array
  *               items:
- *                  type: object
+ *                  type: string
  *                  description: Relação de cor e quantidade
- *                  example: {"azul claro": 2}
+ *                  example: ["azul claro"]
  *             tags:
  *               type: array
  *               items:
@@ -283,9 +283,8 @@
  *                          cores:
  *                            type: array
  *                            items:
- *                              type: object
- *                              additionalProperties:
- *                                  type: number                     
+ *                              type: string
+ *                                                
  *              example:
  *                      - id: 656bafa4767b47f73b87e18c
  *                        fk_marcanome: nike
@@ -295,7 +294,7 @@
  *                        preco: 379.9
  *                        tamanho: 32
  *                        fk_tags:  [corrida,com cadarço]
- *                        cores: [ branco: 2, preto: 3 ]
+ *                        cores: [ branco, preto ]
  *       400:
  *         description: Credenciais inválidas
  *         content:
@@ -425,9 +424,8 @@
  *                          cores:
  *                            type: array
  *                            items:
- *                              type: object
- *                              additionalProperties:
- *                                  type: number                     
+ *                              type: string
+                
  *              example:
  *                      - id: 656bafa4767b47f73b87e18c
  *                        fk_marcanome: nike
@@ -437,7 +435,7 @@
  *                        preco: 379.9
  *                        tamanho: 32
  *                        fk_tags:  [corrida,com cadarço]
- *                        cores: [ branco: 2, preto: 3 ]
+ *                        cores: [ branco, preto ]
  *       400:
  *         description: Credenciais inválidas
  *         content:
@@ -506,9 +504,7 @@
  *                          cores:
  *                            type: array
  *                            items:
- *                              type: object
- *                              additionalProperties:
- *                                  type: number                     
+ *                              type: string
  *              example:
  *                      - id: 656bafa4767b47f73b87e18c
  *                        fk_marcanome: nike
@@ -518,7 +514,7 @@
  *                        preco: 379.9
  *                        tamanho: 32
  *                        fk_tags:  [corrida,com cadarço]
- *                        cores: [ branco: 2, preto: 3 ]
+ *                        cores: [ branco, preto ]
  *       400:
  *         description: Credenciais inválidas
  *         content:
