@@ -1,4 +1,5 @@
 import produtoModel from "../models/Produto.js";
+import fs from 'fs'
 
 // cadastra um novo produto
 async function cadastrarProduto(body) {
@@ -15,6 +16,7 @@ async function cadastrarProduto(body) {
     imagem: body.imagem,
   };
 
+  console.log(produto)
   const newProduto = new produtoModel(produto);
 
   return await newProduto.save();
@@ -27,17 +29,20 @@ async function consultarTodosPorUsuario(id) {
       fk_userId: id,
       active: true,
     },
-    "-active -__v -fk_userId", { limit: 10 }
+    "-active -__v", { limit: 10 }
   );
 }
 
 // deleta um produto
-async function deletarProduto(id) {
-  return await produtoModel.findByIdAndDelete(id);
+async function deletarProduto(id, userId) {
+  return await produtoModel.findOneAndDelete({
+    fk_userId: userId,
+    _id: id
+  });
 }
 
 // consulta um produto pelo id dele
-async function consultarProdutoPorId(id, userId) {
+async function consultarProdutoPorId(id) {
   return await produtoModel.findOne({ _id: id },'-active -__v -fk_userId');
 }
 
@@ -91,6 +96,9 @@ async function alterarImagem(id, url) {
     cores,
     fk_tags,
   } = await produtoModel.findByIdAndUpdate(id, { imagem: url }, { new: true });
+
+  // remove a antiga imagem
+  fs.unlinkSync(url);
 
   return {
     fk_marcanome,

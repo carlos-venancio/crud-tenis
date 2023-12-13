@@ -28,8 +28,9 @@ app.use("/marca", marcaRouter);
 app.use("/tag", tagRouter);
 app.use("/search", searchRouter);
 app.use("/pagamento", pagamentoRouter);
+app.use(express.static('./src/uploads'))
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-app.use("/src/uploads", express.static('./src/uploads'))
+app.use(express.static('./src/uploads'))
 
 
 
