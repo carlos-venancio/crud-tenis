@@ -3,7 +3,7 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 // reaproveitando a estrutura
 import { Outlet } from "react-router-dom";
-
+// import Products from "./components/products"
 
 
 
@@ -15,7 +15,7 @@ function App() {
     
     <Outlet/>
 
-    
+    {/* <Products/> */}
     <Footer/>
 
     </div>
