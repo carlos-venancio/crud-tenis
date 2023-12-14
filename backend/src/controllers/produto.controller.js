@@ -166,7 +166,7 @@ async function pegarTodos(req, res) {
   try {
     const produtos = await repositories.pegarTodos();
     res.status(200).json({
-      message: "ultimos 10 produtos consultados com sucesso",
+      message: "ultimos 25 produtos consultados com sucesso",
       data: produtos,
     });
   } catch (e) {
