@@ -95,7 +95,7 @@ async function alterarImagem(id, url) {
 }
 
 async function pegarTodos() {
-  return await produtoModel.find({}, "-active -__v -_id").limit(10);
+  return await produtoModel.find({}, "-active -__v -_id").limit(25);
 }
 
 export default {
